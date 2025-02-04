@@ -10,7 +10,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
-  site: 'https://astro-portfolio-template.pages.dev',
+  site: 'annachen1228.github.io',
   integrations: [tailwind(), react(), robotsTxt(), sitemap()],
   server: {
     host: '0.0.0.0', // 允許從容器外部訪問
