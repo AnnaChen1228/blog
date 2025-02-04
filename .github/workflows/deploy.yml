@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    permissions:
+      contents: write
     steps:
       - name: Checkout
         uses: actions/checkout@v3
@@ -16,14 +18,32 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
+          cache: 'npm' # 添加 npm 緩存
 
       - name: Install Dependencies
         run: |
-          npm install
+          npm ci # 使用 ci 而不是 install，這樣更可靠
+          npm list # 列出安裝的包
 
       - name: Build
         run: |
+          echo "Starting build process..."
           npm run build
+          echo "Build completed"
+          echo "Checking build output:"
+          ls -la
+          if [ -d "dist" ]; then
+            echo "dist directory exists"
+            ls -la dist
+          else
+            echo "Error: dist directory not found"
+            exit 1
+          fi
+
+      - name: Create .nojekyll file
+        run: |
+          touch dist/.nojekyll
+          echo "Created .nojekyll file"
 
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v3
@@ -31,3 +51,4 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./dist
           publish_branch: gh-pages
+          force_orphan: true
