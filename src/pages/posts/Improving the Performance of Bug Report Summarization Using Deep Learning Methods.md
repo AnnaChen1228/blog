@@ -5,7 +5,7 @@ date: "2023.07 - 2024.01"
 layout: ../../layouts/PostLayout.astro
 # description: "Improving bug report summarization efficiency through deep learning-based intent detection techniques"
 
-img_path : "/BRC.jpeg"
+img_path : "/BRC.jpg"
 img_alt : "Insert image description here"
 ---
 

@@ -3,7 +3,7 @@ export const info = {
   brief_description:
     "I'm a CS grad student specializing in NLP and full-stack development, turning complex data into meaningful insights.",
   role: "CS Grad Student",
-  picture: "/picture.jpeg",
+  picture: "/picture.jpg",
   picture_alt: "Bart Simpson",
   location: "New Taipei City, Taiwan",
   cv: "/cv.pdf",
@@ -51,7 +51,7 @@ export const info = {
       link: "https://github.com/AnnaChen1228/Improving-the-Performance-of-Bug-Report-Summarization-Using-Deep-Learning-Methods",
       tech: ["Python", "NLP"],
       img_alt: "BRC",
-      img_path: "/BRC.jpeg",
+      img_path: "/BRC.jpg",
     },
     {
       title: "Photo Booth",
