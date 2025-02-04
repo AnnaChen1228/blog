@@ -1,35 +1,52 @@
 ---
-title: "My First Astro Post"
-date: "2022-01-01"
+title: "Scheduling System"
+date: "2024"
 
 layout: ../../layouts/PostLayout.astro
-description: "This is my first Astro post. Stay tuned for more exciting content coming soon!"
+description: "Smart staff scheduling system for convenience stores 📅"
 
-img_path : "/paper.png"
+img_path : "/scheduling_system.jpg"
 img_alt: "Insert image description here"
 ---
 
-This is my first Astro post. Stay tuned for more exciting content coming soon!
-Voluptate dolor aliquip ipsum aliquip velit cillum mollit aliqua veniam cillum sint enim ad amet. Lorem cillum consectetur esse sint. Cillum excepteur do enim nulla qui esse sint ipsum amet adipisicing do.
+## 📅 Smart Scheduling System
 
-## Section 1
+Ever wondered how to make employee scheduling less of a headache? I built this automated scheduling system to tackle the real-world challenges of small businesses. Using smart algorithms, it transforms complex scheduling tasks into a breeze!
 
-Commodo adipisicing et tempor laboris commodo enim consequat. Exercitation velit nulla excepteur eu qui minim in. Laborum occaecat occaecat irure occaecat labore et deserunt adipisicing exercitation.
+[![GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-blue?logo=GitHub)](https://github.com/yourusername/scheduling-system)
+[![Demo](https://img.shields.io/badge/Demo-Watch_Demo-red?logo=youtube)](https://drive.google.com/file/d/1dOWkfAOg4v23npsz4hLvx4L_l3Y802g9/view?usp=sharing)
+[![Slides](https://img.shields.io/badge/Slides-View_Presentation-orange?logo=canva)](https://www.canva.com/design/DAGPOOIn43w/uaJ23iJiGIqEy5abAUu2IA/edit)
 
-Duis est sint Lorem anim. Excepteur sunt magna sint exercitation aliqua adipisicing dolor dolore anim tempor Lorem enim dolore. Aliqua aliqua occaecat laborum culpa enim. Aliqua et ad consequat elit officia Lorem sunt voluptate adipisicing laborum velit adipisicing sunt. Sit cupidatat consequat velit eiusmod ut excepteur elit cillum irure pariatur sunt eu sunt dolor. Nisi eu est reprehenderit cillum magna eiusmod elit aliqua amet reprehenderit irure.
+### ✨ What Makes It Special
+- **Smart Algorithm** that considers employee preferences and business rules
+- **Conflict Detection** to catch scheduling issues before they happen
+- **User-Friendly Interface** designed for real-world use
+- **Flexible Rules** adaptable to different business needs
 
-## Section 2
+### 🛠️ Tech Stack
+[![Python](https://img.shields.io/badge/Python-FastAPI-green?logo=python)](https://fastapi.tiangolo.com/)
+[![JavaScript](https://img.shields.io/badge/Frontend-JavaScript-yellow?logo=javascript)](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
+[![HTML5](https://img.shields.io/badge/HTML5-Frontend-orange?logo=html5)](https://developer.mozilla.org/en-US/docs/Web/HTML)
+[![CSS3](https://img.shields.io/badge/CSS3-Styling-blue?logo=css3)](https://developer.mozilla.org/en-US/docs/Web/CSS)
+[![MySQL](https://img.shields.io/badge/Database-MySQL-orange?logo=mysql)](https://www.mysql.com/)
+<!-- [![AWS](https://img.shields.io/badge/Cloud-AWS-yellow?logo=amazon-aws)](https://aws.amazon.com/) -->
 
-Reprehenderit tempor laborum enim adipisicing amet tempor et. Consectetur reprehenderit sit quis ea ad occaecat aliquip ipsum aliqua aliquip proident ullamco culpa. Eu eu enim proident deserunt irure do in commodo nostrud elit quis quis occaecat sit. Occaecat cupidatat cillum ex in nisi laborum ullamco cillum officia amet et. Aliquip enim exercitation sint ut in deserunt ut et laborum ex reprehenderit cillum do. Veniam veniam amet aute incididunt mollit ex cupidatat nulla.
+### 🚀 Key Features
+- Automated schedule generation
+- Employee preference management
+- Work hour regulations compliance
+- Real-time conflict detection
+- Easy-to-use dashboard
+- Mobile-responsive design
 
-Esse esse Lorem culpa minim consectetur dolor exercitation sunt in. Cillum proident labore irure dolor dolore. Mollit cillum esse quis labore aliqua reprehenderit anim ad sint ullamco tempor. Commodo veniam est mollit excepteur anim pariatur elit ullamco aliquip ut enim id magna. Lorem cillum ad Lorem ea.
+### 💡 Implementation Highlights
+- **Vanilla JavaScript** for dynamic interactions
+- **Custom CSS** for responsive design
+- **Semantic HTML** for better accessibility
+- **RESTful API** integration
+- **Local Storage** for better user experience
 
-Aute ullamco aute ea cillum nisi duis laborum consequat nisi deserunt dolore ex officia. Nulla deserunt laboris laborum cillum occaecat occaecat ut incididunt ex laboris consequat eu. Exercitation consequat ullamco excepteur excepteur in pariatur cupidatat pariatur aute aute tempor aliquip.
-
-Eiusmod consequat occaecat aute sint velit veniam Lorem officia consequat proident est consectetur aliqua. Tempor pariatur ipsum voluptate ex incididunt ea ad minim quis id sit Lorem culpa adipisicing. Commodo nisi non sunt ipsum eiusmod voluptate est aliquip in deserunt.
-
-Nisi cupidatat exercitation irure nulla irure ut Lorem irure Lorem. Ex et sunt esse sint. Magna elit Lorem consequat sint occaecat ad do tempor. Nostrud velit exercitation mollit ut aute labore pariatur ipsum. Nostrud ad adipisicing velit elit aute enim adipisicing consequat dolore voluptate nostrud. Tempor nulla Lorem eu aliquip. Dolor labore est fugiat aute sint sint incididunt sunt non adipisicing tempor.
-
-Elit incididunt anim non magna pariatur dolor id officia irure nostrud aute reprehenderit veniam. Incididunt fugiat sit laboris deserunt et ea id cupidatat ex irure deserunt magna exercitation labore. Enim ad quis consequat ullamco velit dolore dolor labore elit amet sint minim nostrud. Occaecat Lorem sunt reprehenderit cillum. Et Lorem non excepteur tempor laborum laborum. Qui cupidatat adipisicing magna ullamco sit minim fugiat aliqua consectetur fugiat eiusmod.
-
-Cillum enim amet amet dolor sint minim eiusmod consectetur amet labore ut. Velit aliqua minim aute incididunt do. Laboris veniam adipisicing adipisicing ut aliqua do. Qui laborum quis cillum est tempor mollit elit reprehenderit.
+<!-- ### 📱 Screenshots
+<table>
+  <tr>
+    <td><img src="path_to_your_screenshot1.png" -->

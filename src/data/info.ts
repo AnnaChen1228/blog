@@ -1,50 +1,42 @@
 export const info = {
-  name: "Bart Simpson",
+  name: "Anna Chen",
   brief_description:
-    "I'm a mischievous full stack developer with a knack for troublemaking.",
-  role: "Full Stack Developer",
-  picture: "/pic.png",
+    "I'm a CS grad student specializing in NLP and full-stack development, turning complex data into meaningful insights.",
+  role: "CS Grad Student",
+  picture: "/picture.jpeg",
   picture_alt: "Bart Simpson",
-  location: "Springfield, USA",
-  cv: "/resume.pdf",
+  location: "New Taipei City, Taiwan",
+  cv: "/cv.pdf",
 
   about: {
-    description: `I'm a full stack developer with a passion for causing a little chaos in web development.
-    I have a solid foundation in computer science, although I prefer skateboarding over studying.
-    I excel in building web applications using React, Node.js, and MongoDB.
-    I'm known for my sharp wit and quick thinking, traits that serve me well in coding and pranks alike.
-    Looking for a challenge? Let's create something memorable together.`,
+    description: `I'm a CS graduate student diving into the world of AI and full-stack development. 
+    Passionate about NLP and deep learning, while exploring the art of web development. 
+    When I'm not training models or learning new tech stacks, you'll find me turning ideas into code. 
+    Let's grow and build something meaningful together!
+    `,
     education: [
       {
-        title: "Self-Taught Developer Extraordinaire",
-        date: "2000 - Present",
-        location: "Springfield Elementary School of Hard Knocks",
-        gpa: "4.0 (A+ in Pranks)",
-        thesis: "The Art of Subverting Expectations: A Practical Guide",
+        "title": "Master of Computer Science and Information Engineering",
+        "date": "2024 - Present",
+        "location": "National Central University",
+        "research": "Natural Language Processing and Legal Text Analysis"
       },
+      {
+        "title": "Bachelor of Computer Science and Engineering",
+        "date": "2020 - 2024",  // 我根據一般大學四年制推算的時間，如果不正確請修正
+        "location": "Yuan-Ze University",
+        "gpa": "3.56/4",
+        "thesis": "Improving the Performance of Bug Report Summarization Using Deep Learning Methods"
+      }
     ],
     experience: [
       {
-        title: "Frontend Developer",
-        date: "2015 - Present",
-        location: "Krusty Burger Web Dev",
-        description:
-          "Crafted interactive web experiences using React and Redux. Often multitasked between coding and avoiding Principal Skinner.",
-      },
-      {
-        title: "Backend Bandit",
-        date: "2013 - 2015",
-        location: "Comic Book Guy's Software Emporium",
-        description:
-          "Masterminded backend solutions using Node.js and MongoDB. Surprisingly good at debugging, considering my history of causing bugs.",
-      },
-      {
-        title: "Junior Hacker",
-        date: "2010 - 2013",
-        location: "Springfield Elementary Cyber Club",
-        description:
-          "Pioneered early web exploits, leading the club in daring coding escapades. Was disciplined for hacking the school's grading system.",
-      },
+        "title": "Application Services Intern",
+        "date": "2024.02 - 2024.07",
+        "company": "Telecom Technology Center",
+        "location": "Taiwan",
+        "description":  "- Participated in ERP system implementation evaluation and bidding process\n- Executed database migration projects and ensured data integrity\n- Conducted comprehensive web application testing and documentation"
+      }
     ],
 
     skills: ["JavaScript", "React", "Node.js", "MongoDB", "Prank Mastery"], // not used yet
@@ -52,41 +44,41 @@ export const info = {
 
   projects: [
     {
-      title: "Bart's Prank Portfolio",
+      title: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods",
       date: "2024",
       description:
-        "An interactive portfolio website showcasing my mischievous coding projects.",
-      link: "https://github.com/bartsimpsonfake/prank-portfolio",
-      tech: ["React", "Node.js", "MongoDB", "Sarcasm.js"],
-      img_alt: "Bart's Portfolio",
-      img_path: "/simpsons.png",
+        "mproved bug report analysis efficiency using deep learning and intent detection",
+      link: "https://github.com/AnnaChen1228/Improving-the-Performance-of-Bug-Report-Summarization-Using-Deep-Learning-Methods",
+      tech: ["Python", "NLP"],
+      img_alt: "BRC",
+      img_path: "/BRC.jpeg",
     },
     {
-      title: "Skateboard Shop",
+      title: "Photo Booth",
       date: "2023",
       description:
-        "An e-commerce site selling skateboards and prank supplies. No bullies allowed!",
-      link: "https://github.com/bartsimpsonfake/skate-shop",
-      tech: ["React", "Node.js", "MongoDB", "Skateboard.js"],
-      img_alt: "Skateboard Shop",
-      img_path: "skateboard.png",
+        "Modern photo booth app with instant filters and video creation 📸✨",
+      link: "hhttps://github.com/AnnaChen1228/Photo-booth",
+      tech: ["Python","OpenCV","Selenium"],
+      img_alt: "Photo Booth",
+      img_path: "photo_booth.jpg",
     },
     {
-      title: "Comic Book Club",
-      date: "2022",
+      title: "Scheduling System",
+      date: "2024",
       description:
-        "A platform for comic book enthusiasts to discuss and share their collections.",
+        "Smart staff scheduling system for convenience stores 📅",
       link: "https://github.com/bartsimpsonfake/comic-club",
-      tech: ["React", "Node.js", "MongoDB", "Comic.js"],
-      img_alt: "Comic Book Club",
-      img_path: "comics.png",
+      tech: ["Python", "SQL", "JavaScript", "CSS","HTML"],
+      img_alt: "Scheduling System",
+      img_path: "scheduling_system.jpg",
     },
   ],
 
   contact: {
-    email: "bart@thesimpsons.com",
-    linkedin: "https://www.linkedin.com/in/bartsimpsonfake",
-    github: "https://www.github.com/gio-del",
-    twitter: "https://www.twitter.com/bartsimpsonfake",
+    email: "angelachen572@gmail.com",
+    linkedin: "https://www.linkedin.com/in/anna-chen-5a93a3300/",
+    github: "https://github.com/AnnaChen1228",
+    // twitter: "https://www.twitter.com/bartsimpsonfake",
   },
 };

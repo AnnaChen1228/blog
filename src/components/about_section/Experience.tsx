@@ -22,7 +22,7 @@ export default function Experience(props: ExperienceProps) {
           <div className="relative left-10 w-full">
             <p className="text-xl font-normal">{exp.date}</p>
             <p className="text-xl font-normal">{exp.location}</p>
-            <p className="lg:text-xl text-lg font-normal">{exp.description}</p>
+            <p className="text-xl font-normal whitespace-pre-wrap">{exp.description}</p>
           </div>
 
           {index !== experience.length - 1 && (

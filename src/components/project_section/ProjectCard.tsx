@@ -15,7 +15,7 @@ export default function ProjectCard(props: ProjectCardProps) {
         <a
           href={project.link}
           rel="noreferrer"
-          aria-label={project.img_alt + ", click to open the project page"}
+          aria-label={project.img_alt + ", click to open the blog page"}
         >
           <LazyLoadImage
             className="h-52 w-full object-cover"
@@ -33,7 +33,7 @@ export default function ProjectCard(props: ProjectCardProps) {
               href={project.link}
               rel="noreferrer"
               className="hover:underline"
-              aria-label="Title of the project, click to open the project page"
+              aria-label="Title of the blog, click to open the blog page"
             >
               {project.title}
             </a>
@@ -42,7 +42,7 @@ export default function ProjectCard(props: ProjectCardProps) {
             href={project.link}
             rel="noreferrer"
             className="block mt-2"
-            aria-label="Description of the project, click to open the project page"
+            aria-label="Description of the blog, click to open the blog page"
           >
             <p className="text-xl font-semibold text-gray-900">
               {project.description}

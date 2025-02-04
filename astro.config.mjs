@@ -3,7 +3,6 @@ import tailwind from "@astrojs/tailwind";
 import react from "@astrojs/react";
 import robotsTxt from "astro-robots-txt";
 import { rehypeAccessibleEmojis } from 'rehype-accessible-emojis';
-
 import sitemap from "@astrojs/sitemap";
 
 // https://astro.build/config
@@ -12,5 +11,12 @@ export default defineConfig({
     rehypePlugins: [rehypeAccessibleEmojis],
   },
   site: 'https://astro-portfolio-template.pages.dev',
-  integrations: [tailwind(), react(), robotsTxt(), sitemap()]
+  integrations: [tailwind(), react(), robotsTxt(), sitemap()],
+  server: {
+    host: '0.0.0.0', // 允許從容器外部訪問
+    port: 4321
+  },
+  devToolbar: {
+    enabled: false,
+  },
 });
