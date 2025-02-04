@@ -10,7 +10,7 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
-  site: 'https://annachen1228.github.io',
+  site: 'https://annachen.github.io',
   output: 'static',
   integrations: [tailwind(), react(), robotsTxt(), sitemap()],
   server: {
