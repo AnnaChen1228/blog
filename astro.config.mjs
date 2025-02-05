@@ -9,15 +9,10 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
-  site: 'https://annachen1228.github.io',
-  base: '/blog',
-  outDir: './dist', // 明確指定輸出目錄
-  trailingSlash: 'always', // 確保 URL 結尾有斜線
-  output: 'static',
+  // 更新為你的 Vercel 網域，或者你的自定義網域
+  site: 'https://your-project.vercel.app', // 部署後更新為實際的 Vercel URL
   integrations: [tailwind(), react(), robotsTxt(), sitemap()],
-  build: {
-    assets: '_assets' // 指定資產目錄
-  },
+  // 開發環境的設置
   server: {
     host: '0.0.0.0',
     port: 4321
@@ -25,4 +20,7 @@ export default defineConfig({
   devToolbar: {
     enabled: false,
   },
+  // 添加輸出配置
+  output: 'static',
+  // 確保沒有 base 路徑配置
 });
