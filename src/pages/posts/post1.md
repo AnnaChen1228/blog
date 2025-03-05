@@ -5,8 +5,8 @@ date: "2024"
 layout: ../../layouts/PostLayout.astro
 description: "Smart staff scheduling system for convenience stores 📅"
 
-img_path : "/scheduling_system.jpg"
-img_alt: "Insert image description here"
+# img_path : "/scheduling_system.jpg"
+# img_alt: "Insert image description here"
 ---
 
 ## 📅 Smart Scheduling System

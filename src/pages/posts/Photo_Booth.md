@@ -5,8 +5,8 @@ date: "2023"
 layout: ../../layouts/PostLayout.astro
 description: "Modern photo booth app with instant filters and video creation 📸✨"
 
-img_path : "/photo_booth.jpg"
-img_alt : "Insert image description here"
+# img_path : "/photo_booth.jpg"
+# img_alt : "Insert image description here"
 ---
 
 # 📸 Photo Booth Project

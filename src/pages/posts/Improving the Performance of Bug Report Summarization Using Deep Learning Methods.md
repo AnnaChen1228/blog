@@ -1,12 +1,12 @@
 ---
-title: "Improving the Performance of Bug Report Summarization ..."
-date: "2023.07 - 2024.01"
+title: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods"
+date: "2024.01"
 
 layout: ../../layouts/PostLayout.astro
 # description: "Improving bug report summarization efficiency through deep learning-based intent detection techniques"
 
-img_path : "/BRC.jpg"
-img_alt : "Insert image description here"
+# img_path : "/BRC.jpg"
+# img_alt : "Insert image description here"
 ---
 
 <!-- # Improving the Performance of Bug Report Summarization Using Deep Learning Methods -->
