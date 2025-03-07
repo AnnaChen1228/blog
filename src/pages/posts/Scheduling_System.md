@@ -9,7 +9,7 @@ description: "Smart staff scheduling system for convenience stores 📅"
 # img_alt: "Insert image description here"
 ---
 
-## 📅 Smart Scheduling System
+## 📅 Scheduling System
 
 Ever wondered how to make employee scheduling less of a headache? I built this automated scheduling system to tackle the real-world challenges of small businesses. Using smart algorithms, it transforms complex scheduling tasks into a breeze!
 

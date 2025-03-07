@@ -4,7 +4,7 @@ date: "2025.03.05"
 
 layout: ../../layouts/PostLayout.astro
 ---
-
+# Find & Index about List & String
 ## String
 
 ### Find

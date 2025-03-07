@@ -9,7 +9,7 @@ layout: ../../layouts/PostLayout.astro
 # img_alt : "Insert image description here"
 ---
 
-<!-- # Improving the Performance of Bug Report Summarization Using Deep Learning Methods -->
+# Improving the Performance of Bug Report Summarization Using Deep Learning Methods
 
 🎉 **Supported by the 112th Academic Year College Student Research Grant**
 
