@@ -19,7 +19,7 @@ layout: ../../layouts/PostLayout.astro
 ## 🎯 Project Overview
 
 Our research focuses on enhancing bug report summarization through deep learning methods. We explore how intent detection can improve summarization performance and investigate various classifiers for optimal results.
-
+![Framework](/BRC.jpg)
 ## 🔬 Methodology
 
 ### Feature Engineering

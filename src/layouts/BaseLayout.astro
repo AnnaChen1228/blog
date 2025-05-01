@@ -28,6 +28,48 @@ import "../styles/global.css";
       href={`${Astro.site}rss.xml`}
     />
     <meta name="generator" content={Astro.generator} />
+    
+    <!-- KaTeX CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+
+    <!-- KaTeX JS -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+    
+    <!-- KaTeX Auto-render Extension -->
+    <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+    
+    <!-- Initialize KaTeX auto-render -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        renderMathInElement(document.body, {
+          delimiters: [
+            {left: "$$", right: "$$", display: true},
+            {left: "$", right: "$", display: false}
+          ],
+          throwOnError: false
+        });
+      });
+    </script>
+
+    <!-- 添加 KaTeX 樣式優化 -->
+    <style is:global>
+      .katex {
+        font-size: 1.1em;
+      }
+      
+      .katex-display {
+        margin: 1em 0;
+        overflow-x: auto;
+        overflow-y: hidden;
+      }
+
+      /* 暗色模式支援 */
+      .dark .katex {
+        color: #fff;
+      }
+    </style>
+
+    <!-- 原有的 Font Awesome 載入 -->
     <script type="text/javascript">
       (function () {
         var css = document.createElement("link");
@@ -41,6 +83,8 @@ import "../styles/global.css";
         document.head.appendChild(css);
       })();
     </script>
+
+    <!-- 其他原有的 head 內容 -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -53,7 +97,7 @@ import "../styles/global.css";
     />
     <title>{title}</title>
     <script>
-      // On page load or when changing themes, best to add inline in `head` to avoid FOUC
+      // 原有的深色模式切換腳本
       if (
         localStorage.getItem("theme") === "dark" ||
         (!("theme" in localStorage) &&
