@@ -1,0 +1,147 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="description" content="A portfolio website for a software developer"><meta name="keywords" content="portfolio, software, developer"><meta name="author" content="Your Name"><meta name="viewport" content="width=device-width, initial-scale=1"><link rel="icon" type="image/png" href="/smile.png"><link rel="alternate" type="application/rss+xml" title="Your Site's Title" href="https://your-project.vercel.app/rss.xml"><meta name="generator" content="Astro v4.4.14"><!-- KaTeX CSS --><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"><!-- KaTeX JS --><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script><!-- KaTeX Auto-render Extension --><script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script><!-- Initialize KaTeX auto-render --><!-- 添加 KaTeX 樣式優化 --><!-- 原有的 Font Awesome 載入 --><script type="text/javascript">
+      (function () {
+        var css = document.createElement("link");
+        css.href =
+          "https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css";
+        css.rel = "stylesheet";
+        css.integrity =
+          "sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==";
+        css.crossOrigin = "anonymous";
+        css.referrerPolicy = "no-referrer";
+        document.head.appendChild(css);
+      })();
+    </script><!-- 其他原有的 head 內容 --><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet"><link href="https://cdn.jsdelivr.net/npm/normalize.css@8.0.1/normalize.min.css" rel="stylesheet"><title>Lora vs QLoRA</title><link rel="stylesheet" href="/_astro/Boosting_the_Potential_of _Large_Language_Models_with_an_Intelligent_Information_Assistant.ue6QEZZ3.css" />
+<link rel="stylesheet" href="/_astro/index.HhuZx8vT.css" /><script type="module">localStorage.getItem("theme")==="dark"||!("theme"in localStorage)&&window.matchMedia("(prefers-color-scheme: dark)").matches?document.documentElement.classList.add("dark"):document.documentElement.classList.remove("dark");document.addEventListener("DOMContentLoaded",function(){renderMathInElement(document.body,{delimiters:[{left:"$$",right:"$$",display:!0},{left:"$",right:"$",display:!1}],throwOnError:!1})});
+</script></head> <body class="bg-primary dark:bg-dk-primary w-full container mx-auto"> <style>astro-island,astro-slot,astro-static-slot{display:contents}</style><script>(()=>{var l=(s,i,o)=>{let r=async()=>{await(await s())()},t=typeof i.value=="object"?i.value:void 0,c={rootMargin:t==null?void 0:t.rootMargin},n=new IntersectionObserver(e=>{for(let a of e)if(a.isIntersecting){n.disconnect(),r();break}},c);for(let e of o.children)n.observe(e)};(self.Astro||(self.Astro={})).visible=l;window.dispatchEvent(new Event("astro:visible"));})();;(()=>{var v=Object.defineProperty;var A=(c,s,a)=>s in c?v(c,s,{enumerable:!0,configurable:!0,writable:!0,value:a}):c[s]=a;var d=(c,s,a)=>(A(c,typeof s!="symbol"?s+"":s,a),a);var u;{let c={0:t=>m(t),1:t=>a(t),2:t=>new RegExp(t),3:t=>new Date(t),4:t=>new Map(a(t)),5:t=>new Set(a(t)),6:t=>BigInt(t),7:t=>new URL(t),8:t=>new Uint8Array(t),9:t=>new Uint16Array(t),10:t=>new Uint32Array(t)},s=t=>{let[e,n]=t;return e in c?c[e](n):void 0},a=t=>t.map(s),m=t=>typeof t!="object"||t===null?t:Object.fromEntries(Object.entries(t).map(([e,n])=>[e,s(n)]));customElements.get("astro-island")||customElements.define("astro-island",(u=class extends HTMLElement{constructor(){super(...arguments);d(this,"Component");d(this,"hydrator");d(this,"hydrate",async()=>{var f;if(!this.hydrator||!this.isConnected)return;let e=(f=this.parentElement)==null?void 0:f.closest("astro-island[ssr]");if(e){e.addEventListener("astro:hydrate",this.hydrate,{once:!0});return}let n=this.querySelectorAll("astro-slot"),r={},l=this.querySelectorAll("template[data-astro-template]");for(let o of l){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(r[o.getAttribute("data-astro-template")||"default"]=o.innerHTML,o.remove())}for(let o of n){let i=o.closest(this.tagName);i!=null&&i.isSameNode(this)&&(r[o.getAttribute("name")||"default"]=o.innerHTML)}let h;try{h=this.hasAttribute("props")?m(JSON.parse(this.getAttribute("props"))):{}}catch(o){let i=this.getAttribute("component-url")||"<unknown>",b=this.getAttribute("component-export");throw b&&(i+=` (export ${b})`),console.error(`[hydrate] Error parsing props for component ${i}`,this.getAttribute("props"),o),o}let p;await this.hydrator(this)(this.Component,h,r,{client:this.getAttribute("client")}),this.removeAttribute("ssr"),this.dispatchEvent(new CustomEvent("astro:hydrate"))});d(this,"unmount",()=>{this.isConnected||this.dispatchEvent(new CustomEvent("astro:unmount"))})}disconnectedCallback(){document.removeEventListener("astro:after-swap",this.unmount),document.addEventListener("astro:after-swap",this.unmount,{once:!0})}connectedCallback(){if(!this.hasAttribute("await-children")||document.readyState==="interactive"||document.readyState==="complete")this.childrenConnectedCallback();else{let e=()=>{document.removeEventListener("DOMContentLoaded",e),n.disconnect(),this.childrenConnectedCallback()},n=new MutationObserver(()=>{var r;((r=this.lastChild)==null?void 0:r.nodeType)===Node.COMMENT_NODE&&this.lastChild.nodeValue==="astro:end"&&(this.lastChild.remove(),e())});n.observe(this,{childList:!0}),document.addEventListener("DOMContentLoaded",e)}}async childrenConnectedCallback(){let e=this.getAttribute("before-hydration-url");e&&await import(e),this.start()}async start(){let e=JSON.parse(this.getAttribute("opts")),n=this.getAttribute("client");if(Astro[n]===void 0){window.addEventListener(`astro:${n}`,()=>this.start(),{once:!0});return}try{await Astro[n](async()=>{let r=this.getAttribute("renderer-url"),[l,{default:h}]=await Promise.all([import(this.getAttribute("component-url")),r?import(r):()=>()=>{}]),p=this.getAttribute("component-export")||"default";if(!p.includes("."))this.Component=l[p];else{this.Component=l;for(let y of p.split("."))this.Component=this.Component[y]}return this.hydrator=h,this.hydrate},e,this)}catch(r){console.error(`[astro-island] Error hydrating ${this.getAttribute("component-url")}`,r)}}attributeChangedCallback(){this.hydrate()}},d(u,"observedAttributes",["props"]),u))}})();</script><astro-island uid="26aN5s" prefix="r1" component-url="/_astro/Nav.ZsZDNcAC.js" component-export="default" renderer-url="/_astro/client.rQol9eV7.js" props="{&quot;posts&quot;:[1,[[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Boosting_the_Potential_of _Large_Language_Models_with_an_Intelligent_Information_Assistant.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Boosting the Potential of Large Language Models with an Intelligent Information Assistant&quot;],&quot;date&quot;:[0,&quot;2025.03.22&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Boosting_the_Potential_of _Large_Language_Models_with_an_Intelligent_Information_Assistant&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Find&amp;Index_about_List&amp;String.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Find &amp; Index about List &amp; String&quot;],&quot;date&quot;:[0,&quot;2025.03.05&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Find&amp;Index_about_List&amp;String&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Improving_the_Performance_of_Bug_Report_Summarization_Using_Deep_Learning_Methods.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Improving the Performance of Bug Report Summarization Using Deep Learning Methods&quot;],&quot;date&quot;:[0,&quot;2024.01&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Improving_the_Performance_of_Bug_Report_Summarization_Using_Deep_Learning_Methods&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Lora_vs_QLoRA.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Lora vs QLoRA&quot;],&quot;date&quot;:[0,&quot;2025.08.31&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Lora_vs_QLoRA&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/MiniRAG_Towards_Extremely_Simple_Retrieval-Augmented_Generation.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;MINIRAG: Towards Extremely Simple Retrieval-Augmented Generation&quot;],&quot;date&quot;:[0,&quot;2025.05.01&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/MiniRAG_Towards_Extremely_Simple_Retrieval-Augmented_Generation&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Photo_Booth.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Photo Booth&quot;],&quot;date&quot;:[0,&quot;2023&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;],&quot;description&quot;:[0,&quot;Modern photo booth app with instant filters and video creation 📸✨&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Photo_Booth&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Reference.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Memory Address&quot;],&quot;date&quot;:[0,&quot;2025.03.07&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Reference&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/Scheduling_System.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Scheduling System&quot;],&quot;date&quot;:[0,&quot;2024&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;],&quot;description&quot;:[0,&quot;Smart staff scheduling system for convenience stores 📅&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/Scheduling_System&quot;]}],[0,{&quot;Content&quot;:[0,null],&quot;compiledContent&quot;:[0,null],&quot;default&quot;:[0,null],&quot;file&quot;:[0,&quot;/home/runner/work/blog/blog/src/pages/posts/SymbCoT.md&quot;],&quot;frontmatter&quot;:[0,{&quot;title&quot;:[0,&quot;Faithful Logical Reasoning via Symbolic Chain-of-Thought&quot;],&quot;date&quot;:[0,&quot;2025.03.10&quot;],&quot;layout&quot;:[0,&quot;../../layouts/PostLayout.astro&quot;]}],&quot;getHeadings&quot;:[0,null],&quot;rawContent&quot;:[0,null],&quot;url&quot;:[0,&quot;/posts/SymbCoT&quot;]}]]]}" ssr="" client="visible" opts="{&quot;name&quot;:&quot;Nav&quot;,&quot;value&quot;:true}" await-children=""><nav class="container mx-auto top-0 z-50 absolute bg-primary dark:bg-dk-primary"><div class="w-full px-6 py-2 flex justify-between items-center"><a class="font-bold text-2xl lg:text-4xl" href="/#"><span class="text-secondary dark:text-dk-secondary">&lt;/AC&gt;</span></a><a href="/cv.pdf" download="" class="px-4 py-2 border-2 rounded text-secondary dark:text-dk-secondary border-secondary dark:border-dk-secondary hover:bg-secondary dark:hover:bg-dk-secondary hover:text-primary dark:hover:text-primary cursor-pointer"><i class="fas fa-download mr-2"></i><span class="hidden lg:inline-block font-medium">Download CV</span><span class="lg:hidden font-medium">CV</span></a><div class="inline-flex lg:hidden text-secondary dark:text-dk-secondary"><button class="flex items-center justify-center px-3 py-2 border-2 rounded border-secondary dark:border-dk-secondary appearance-none focus:outline-none" aria-label="Open Navigation Menu"><i class="fas fa-bars fill-current h-4 w-4"></i></button></div><div class="hidden lg:block"><ul class="inline-flex text-secondary dark:text-dk-secondary text-2xl font-normal"><li class="p-4 hover:text-accent dark:hover:text-dk-accent"><a href="/#about">About</a></li><li class="p-4 hover:text-accent dark:hover:text-dk-accent"><a href="/#projects">Projects</a></li><li class="p-4 hover:text-accent dark:hover:text-dk-accent"><a href="/#blog">Blog</a></li><li class="p-4 hover:text-accent dark:hover:text-dk-accent"><a href="/#contact">Contact</a></li><li class="px-4 flex"><button class="self-center" alt="Change theme to dark mode" aria-label="Toggle dark mode"><span class="dark:hidden"><svg class="fill-secondary hover:fill-accent stroke-2" xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M20 24.875q2.042 0 3.479-1.417 1.438-1.416 1.438-3.458 0-2.042-1.438-3.479-1.437-1.438-3.479-1.438t-3.458 1.438Q15.125 17.958 15.125 20t1.417 3.458q1.416 1.417 3.458 1.417ZM20 27q-2.958 0-4.979-2.021T13 20q0-2.958 2.021-5T20 12.958q2.958 0 5 2.042t2.042 5q0 2.958-2.042 4.979T20 27ZM3.208 21.042q-.416 0-.729-.313-.312-.312-.312-.729t.312-.75q.313-.333.729-.333h4.417q.458 0 .771.333.312.333.312.75t-.312.729q-.313.313-.771.313Zm29.167 0q-.417 0-.729-.313-.313-.312-.313-.729t.313-.75q.312-.333.729-.333h4.417q.458 0 .77.333.313.333.313.75t-.313.729q-.312.313-.77.313ZM20 8.667q-.417 0-.729-.313-.313-.312-.313-.729V3.208q0-.458.313-.77.312-.313.729-.313t.75.313q.333.312.333.77v4.417q0 .417-.333.729-.333.313-.75.313Zm0 29.166q-.417 0-.729-.312-.313-.313-.313-.729v-4.417q0-.458.313-.771.312-.312.729-.312t.75.312q.333.313.333.771v4.417q0 .416-.333.729-.333.312-.75.312Zm-9.458-25.875-2.584-2.5q-.291-.333-.312-.75-.021-.416.312-.791.334-.292.73-.292.395 0 .812.333L12 10.5q.333.333.333.75t-.291.708q-.292.375-.73.375-.437 0-.77-.375Zm20 20.084L28 29.5q-.333-.333-.312-.729.02-.396.354-.771.25-.333.666-.312.417.02.792.312l2.542 2.5q.291.375.312.792.021.416-.312.75-.334.333-.73.333-.395 0-.77-.333ZM28 12q-.333-.292-.312-.708.02-.417.354-.792l2.5-2.542q.333-.291.75-.312.416-.021.791.312.292.334.292.73 0 .395-.333.77L29.5 12q-.333.333-.75.333T28 12ZM7.958 32.042q-.333-.334-.333-.73 0-.395.333-.812L10.5 28q.333-.333.729-.333.396 0 .771.333.292.292.271.708-.021.417-.271.75l-2.5 2.584q-.417.333-.812.354-.396.021-.73-.354ZM20 20Z"></path></svg></span><span class="hidden dark:inline"><svg class="fill-dk-secondary hover:fill-dk-accent stroke-2" xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M20.083 33.667q-5.666 0-9.666-4t-4-9.667q0-3.583 1.562-6.729 1.563-3.146 4.979-5.438 2.042-.916 3.125-.125 1.084.792.834 3.125.166.292.271.542.104.25.104.458 0 4.542 3.229 7.75 3.229 3.209 7.812 3.209.542 0 .834.062.291.063.583.396 2.417-.125 2.938 1.062.52 1.188-.355 2.896-2.166 2.875-5.291 4.667-3.125 1.792-6.959 1.792Zm0-2.125q3.5 0 6.396-1.959 2.896-1.958 4.146-4.958-.5.125-1.125.208-.625.084-1.125.084-5.5 0-9.354-3.813-3.854-3.812-3.854-9.271 0-.625.083-1.208t.292-1.208q-3.167 1.375-5.084 4.25Q8.542 16.542 8.542 20q0 4.833 3.375 8.188 3.375 3.354 8.166 3.354Zm-.5-11.042Z"></path></svg></span></button></li><li class="px-4 flex"><div class="self-center"><button aria-label="Search"><i class="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl"></i></button></div></li></ul></div></div><div class="hidden"><ul class="w-full text-secondary dark:text-dk-secondary text-xl font-semibold"><li class="p-4"><a href="/#about">About</a></li><li class="p-4"><a href="/#projects">Projects</a></li><li class="p-4"><a href="/#blog">Blog</a></li><li class="p-4"><a href="/#contact">Contact</a></li><li class="p-4 flex flex-row items-center justify-evenly"><button class="self-center" alt="Change theme to dark mode" aria-label="Toggle dark mode"><span class="dark:hidden"><svg class="fill-secondary hover:fill-accent stroke-2" xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M20 24.875q2.042 0 3.479-1.417 1.438-1.416 1.438-3.458 0-2.042-1.438-3.479-1.437-1.438-3.479-1.438t-3.458 1.438Q15.125 17.958 15.125 20t1.417 3.458q1.416 1.417 3.458 1.417ZM20 27q-2.958 0-4.979-2.021T13 20q0-2.958 2.021-5T20 12.958q2.958 0 5 2.042t2.042 5q0 2.958-2.042 4.979T20 27ZM3.208 21.042q-.416 0-.729-.313-.312-.312-.312-.729t.312-.75q.313-.333.729-.333h4.417q.458 0 .771.333.312.333.312.75t-.312.729q-.313.313-.771.313Zm29.167 0q-.417 0-.729-.313-.313-.312-.313-.729t.313-.75q.312-.333.729-.333h4.417q.458 0 .77.333.313.333.313.75t-.313.729q-.312.313-.77.313ZM20 8.667q-.417 0-.729-.313-.313-.312-.313-.729V3.208q0-.458.313-.77.312-.313.729-.313t.75.313q.333.312.333.77v4.417q0 .417-.333.729-.333.313-.75.313Zm0 29.166q-.417 0-.729-.312-.313-.313-.313-.729v-4.417q0-.458.313-.771.312-.312.729-.312t.75.312q.333.313.333.771v4.417q0 .416-.333.729-.333.312-.75.312Zm-9.458-25.875-2.584-2.5q-.291-.333-.312-.75-.021-.416.312-.791.334-.292.73-.292.395 0 .812.333L12 10.5q.333.333.333.75t-.291.708q-.292.375-.73.375-.437 0-.77-.375Zm20 20.084L28 29.5q-.333-.333-.312-.729.02-.396.354-.771.25-.333.666-.312.417.02.792.312l2.542 2.5q.291.375.312.792.021.416-.312.75-.334.333-.73.333-.395 0-.77-.333ZM28 12q-.333-.292-.312-.708.02-.417.354-.792l2.5-2.542q.333-.291.75-.312.416-.021.791.312.292.334.292.73 0 .395-.333.77L29.5 12q-.333.333-.75.333T28 12ZM7.958 32.042q-.333-.334-.333-.73 0-.395.333-.812L10.5 28q.333-.333.729-.333.396 0 .771.333.292.292.271.708-.021.417-.271.75l-2.5 2.584q-.417.333-.812.354-.396.021-.73-.354ZM20 20Z"></path></svg></span><span class="hidden dark:inline"><svg class="fill-dk-secondary hover:fill-dk-accent stroke-2" xmlns="http://www.w3.org/2000/svg" height="40" width="40"><path d="M20.083 33.667q-5.666 0-9.666-4t-4-9.667q0-3.583 1.562-6.729 1.563-3.146 4.979-5.438 2.042-.916 3.125-.125 1.084.792.834 3.125.166.292.271.542.104.25.104.458 0 4.542 3.229 7.75 3.229 3.209 7.812 3.209.542 0 .834.062.291.063.583.396 2.417-.125 2.938 1.062.52 1.188-.355 2.896-2.166 2.875-5.291 4.667-3.125 1.792-6.959 1.792Zm0-2.125q3.5 0 6.396-1.959 2.896-1.958 4.146-4.958-.5.125-1.125.208-.625.084-1.125.084-5.5 0-9.354-3.813-3.854-3.812-3.854-9.271 0-.625.083-1.208t.292-1.208q-3.167 1.375-5.084 4.25Q8.542 16.542 8.542 20q0 4.833 3.375 8.188 3.375 3.354 8.166 3.354Zm-.5-11.042Z"></path></svg></span></button><div class="self-center"><button aria-label="Search"><i class="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl"></i></button></div></li></ul></div></nav><!--astro:end--></astro-island> <div class="container mx-auto px-4">  <main class="mt-24"> <div class="mb-4 md:mb-0 w-full mx-auto relative"> <div class="flex lg:flex-row flex-col relative justify-between items-center mb-4"> <div class="px-4 lg:px-0"> <h1> Lora vs QLoRA </h1> <!-- <a TODO: add tags here
+          href="#"
+          class="py-2 text-green-700 inline-flex items-center justify-center mb-2"
+        >
+          Cryptocurrency
+        </a> --> </div> <p class="text-sm lg:text-base px-4 lg:px-0 flex lg:flex-row flex-col items-center justify-between gap-2"> <span>2025.08.31</span> <a href="/posts" class="hover:underline">Back to posts</a> </p> </div>  </div> <div class="flex flex-col lg:flex-row lg:space-x-12 justify-center"> <div class="px-4 lg:px-0 mt-12 text-text dark:text-dk-text text-lg leading-relaxed w-full lg:w-3/4"> <div class="*:mb-4 leading-relaxed prose dark:prose-invert max-w-none
+        prose-h1:font-bold prose-h1:text-xl
+        prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
+        prose-headings:underline"> <h1 id="lora-vs-qlora">Lora vs QLoRA</h1>
+<p>訓練語言模型(LLM,SLM)需要考慮 GPU 的記憶體空間(memory size)</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>GPU 記憶體</th><th>訓練方式</th></tr></thead><tbody><tr><td>足夠</td><td>full tuning</td></tr><tr><td>不足</td><td>finetuning (LoRA/QLoRA)</td></tr></tbody></table>
+<h2 id="full-tuning">Full Tuning</h2>
+<p>全參數微調需要大量 GPU 記憶體，因為需要載入完整模型權重、梯度和優化器狀態。</p>
+<p><strong>使用方式</strong>:</p>
+<ol>
+<li>載入預訓練模型的完整權重</li>
+<li>對所有參數進行反向傳播和更新</li>
+<li>儲存整個模型的更新後權重</li>
+<li>推論時直接使用完整更新後的模型</li>
+</ol>
+<p><strong>Library</strong>:</p>
+<ul>
+<li><a href="https://github.com/huggingface/transformers">Transformers</a></li>
+<li><a href="https://github.com/unslothai/unsloth">Unsloth</a></li>
+<li><a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA Factory</a></li>
+</ul>
+<h2 id="lora-low-rank-adaptation">LoRA (Low-Rank Adaptation)</h2>
+<p><img src="/lora-animated.gif" alt="LoRA">
+不去訓練原本模型的權重，而是訓練旁邊的小型低秩矩陣，訓練完成時將兩模型合併使用。</p>
+<p><strong>使用方式</strong>:</p>
+<ol>
+<li>凍結原始預訓練模型的權重</li>
+<li>為關鍵層（通常是注意力層）添加低秩分解矩陣 (A×B)</li>
+<li>只訓練這些低秩矩陣，原模型參數保持不變</li>
+<li>訓練完成後，可以選擇：
+<ul>
+<li>合併 LoRA 權重與原始模型（W + ΔW = W + A×B）</li>
+<li>或保持分離，在推論時動態結合</li>
+</ul>
+</li>
+</ol>
+<p><strong>Library</strong>:</p>
+<ul>
+<li><a href="https://github.com/huggingface/peft">PEFT</a></li>
+<li><a href="https://github.com/adapter-hub/adapter-transformers">Adapter-Transformers</a></li>
+<li><a href="https://github.com/hiyouga/LLaMA-Factory">LLaMA Factory</a></li>
+</ul>
+<h2 id="量化quantization">量化(Quantization)</h2>
+<p>模型由高精度(BF16,FP16)轉為低精度(load 4 bit or 8 bit)
+<strong>目的</strong>:</p>
+<ul>
+<li>降低記憶體需求</li>
+<li>加快推理</li>
+</ul>
+<h2 id="量化精度">量化精度</h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>量化位寬</th><th>描述</th><th>記憶體節省</th></tr></thead><tbody><tr><td>FP32 (32-bit)</td><td>標準浮點精度</td><td>基準線</td></tr><tr><td>FP16 (16-bit)</td><td>半精度浮點</td><td>減少 50%</td></tr><tr><td>INT8 (8-bit)</td><td>8位整數</td><td>減少 75%</td></tr><tr><td>INT4 (4-bit)</td><td>4位整數</td><td>減少 87.5%</td></tr></tbody></table>
+<p><strong>Library</strong>:</p>
+<ul>
+<li><a href="https://github.com/TimDettmers/bitsandbytes">bitsandbytes</a></li>
+<li><a href="https://github.com/IST-DASLab/gptq">GPTQ</a></li>
+<li><a href="https://github.com/PanQiWei/AutoGPTQ">AutoGPTQ</a></li>
+</ul>
+<h2 id="qlora-quantized-lora">QLoRA (Quantized LoRA)</h2>
+<p>將原本的大模型以 4-bit 量化方式載入以減少記憶體的消耗，使得同樣的記憶體可以跑更大的模型。</p>
+<p><strong>使用方式</strong>:</p>
+<ol>
+<li>將預訓練模型量化至 4-bit 精度載入 GPU</li>
+<li>使用 Double Quantization 進一步減少記憶體使用</li>
+<li>添加 LoRA 適配器層進行訓練</li>
+<li>使用 Paged Attention 管理記憶體</li>
+<li>訓練時僅更新 LoRA 參數</li>
+<li>訓練完成後得到 LoRA 適配器權重</li>
+<li>推論時可以：
+<ul>
+<li>與原始全精度模型合併使用</li>
+<li>或與量化模型一起使用</li>
+</ul>
+</li>
+</ol>
+<p><strong>Library</strong>:</p>
+<ul>
+<li><a href="https://github.com/artidoro/qlora">QLoRA</a></li>
+<li><a href="https://github.com/huggingface/peft">PEFT</a> (支援 QLoRA)</li>
+<li><a href="https://github.com/unslothai/unsloth">Unsloth</a> (優化的 QLoRA 實現)</li>
+</ul>
+<p>這兩種方法都能顯著減少微調所需的計算資源，使在消費級 GPU 上也能微調大型語言模型。</p> </div> </div> <div class="w-full lg:w-1/4 m-auto mt-12 max-w-screen-sm"> <div class="p-4 border-t border-b md:border md:rounded"> <div class="flex py-2"> <img src="/picture.jpg" alt="Bart Simpson" class="h-10 w-10 rounded-full mr-2 object-cover" width="40" height="40" loading="lazy" decoding="async"> <div> <p class="font-semibold text-gray-700 text-sm">Anna Chen</p> <p class="font-semibold text-gray-600 text-xs">CS Grad Student</p> </div> </div> <p class="text-gray-700 py-3"> I&#39;m a CS grad student specializing in NLP and full-stack development, turning complex data into meaningful insights. </p> <div class="flex flex-row items-center container justify-around"><a href="mailto:angelachen572@gmail.com" target="_blank" rel="noreferrer" class="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent text-3xl lg:text-4xl" aria-label="Email"><i class="fas fa-envelope"></i></a><a href="https://github.com/AnnaChen1228" target="_blank" rel="noreferrer" class="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent text-3xl lg:text-4xl" aria-label="GitHub"><i class="fab fa-github"></i></a><a href="https://www.linkedin.com/in/anna-chen-5a93a3300/" target="_blank" rel="noreferrer" class="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent text-3xl lg:text-4xl" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a></div> </div> </div> </div> </main>  </div> <script>(()=>{var e=async t=>{await(await t())()};(self.Astro||(self.Astro={})).only=e;window.dispatchEvent(new Event("astro:only"));})();</script><astro-island uid="1r8269" component-url="/_astro/TopButton.x76vnCKa.js" component-export="default" renderer-url="/_astro/client.rQol9eV7.js" props="{}" ssr="" client="only" opts="{&quot;name&quot;:&quot;TopButton&quot;,&quot;value&quot;:true}"></astro-island> <astro-island uid="23JTYG" component-url="/_astro/Pointer.kXxBu5Yx.js" component-export="default" renderer-url="/_astro/client.rQol9eV7.js" props="{}" ssr="" client="only" opts="{&quot;name&quot;:&quot;Pointer&quot;,&quot;value&quot;:true}"></astro-island> </body></html>
