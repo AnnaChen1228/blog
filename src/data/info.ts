@@ -19,14 +19,17 @@ export const info = {
         "title": "Master of Computer Science and Information Engineering",
         "date": "2024 - Present",
         "location": "National Central University",
-        "research": "Natural Language Processing and Legal Text Analysis"
+        "research": "Natural Language Processing and Legal Text Analysis",
+        "thesis": [{name : "Understanding Students Through Dialogue: A Dialogue Knowledge Tracing System for Learning Analytics", conference: "CIKM 2025"},
+          {name : "DREAM: 結合領域知識檢索與多代理推理的結構化論文評估方法",conference: "TAAI 2025"}
+        ]
       },
       {
         "title": "Bachelor of Computer Science and Engineering",
-        "date": "2020 - 2024",  // 我根據一般大學四年制推算的時間，如果不正確請修正
+        "date": "2020 - 2024",  
         "location": "Yuan-Ze University",
         "gpa": "3.56/4",
-        "thesis": "Improving the Performance of Bug Report Summarization Using Deep Learning Methods"
+        "thesis": [{name: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods", conference: "112 大專生計畫"}]
       }
     ],
     experience: [
