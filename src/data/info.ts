@@ -50,7 +50,7 @@ export const info = {
       title: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods",
       date: "2024",
       description:
-        "mproved bug report analysis efficiency using deep learning and intent detection",
+        "Improved bug report analysis efficiency using deep learning and intent detection",
       link: "https://github.com/AnnaChen1228/Improving-the-Performance-of-Bug-Report-Summarization-Using-Deep-Learning-Methods",
       tech: ["Python", "NLP"],
       img_alt: "BRC",
