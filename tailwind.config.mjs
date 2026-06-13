@@ -6,14 +6,20 @@ export default {
 	theme: {
 		extend: {
 			colors: {
-				'primary': '#FFF',
-				'secondary': '#1D4CC4',
-				'accent': '#0D2563',
-				'text': '#353755',
-				'dk-primary': '#0C2432',
-				'dk-secondary': '#53C6FF',
-				'dk-accent': '#55C2C3',
-				'dk-text': '#C8DCF5',
+				'primary': '#FFFFFF',
+				'secondary': '#EAB308',
+				'accent': '#B45309',
+				'text': '#292524',
+				'card-bg': '#FFFBEB',
+				'dk-primary': '#1C1917',
+				'dk-secondary': '#FDE047',
+				'dk-accent': '#F59E0B',
+				'dk-text': '#E7E5E4',
+				'dk-card-bg': '#292524',
+			},
+			fontFamily: {
+				'display': ['"Space Grotesk"', 'Iansui', 'sans-serif'],
+				'body': ['Iansui', 'Inter', 'sans-serif'],
 			},
 		},
 	},

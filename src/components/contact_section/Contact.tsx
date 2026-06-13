@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import { info } from "../../data/info";
 
 interface ContactProps {
@@ -8,60 +7,95 @@ interface ContactProps {
 
 export default function Contact({ contact, size }: ContactProps) {
   const socialMediaLinks = [
-    // Fix this if you add or remove social media links in info.ts
     {
       name: "email",
       icon: "fas fa-envelope",
       link: `mailto:${contact.email}`,
-      link_alt: "Email",
+      label: "Email",
+      value: contact.email,
     },
     {
       name: "github",
       icon: "fab fa-github",
       link: contact.github,
-      link_alt: "GitHub",
+      label: "GitHub",
+      value: "@AnnaChen1228",
     },
     {
       name: "linkedin",
       icon: "fab fa-linkedin",
       link: contact.linkedin,
-      link_alt: "LinkedIn",
+      label: "LinkedIn",
+      value: "Anna Chen",
     },
-    // {
-    //   name: "twitter",
-    //   icon: "fab fa-x-twitter",
-    //   link: contact.twitter,
-    //   link_alt: "Twitter",
-    // },
-    // {
-    //   name: "rss",
-    //   icon: "fas fa-rss",
-    //   link: "/rss.xml",
-    //   link_alt: "RSS Feed",
-    // },
   ];
 
+  // Compact, business-card style: just the email / GitHub / LinkedIn icons.
+  // Used in the post-page sidebar where the full section is far too big.
+  if (size === "md") {
+    return (
+      <div className="flex items-center justify-center gap-3 pt-1">
+        {socialMediaLinks.map((social, index) => (
+          <a
+            key={index}
+            href={social.link}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={social.label}
+            title={social.label}
+            className="w-9 h-9 rounded-full bg-secondary/10 hover:bg-secondary flex items-center justify-center text-secondary hover:text-white transition-colors duration-200"
+          >
+            <i className={`${social.icon} text-base`} />
+          </a>
+        ))}
+      </div>
+    );
+  }
+
   return (
-    <div
-      className={
-        "flex flex-row items-center container justify-around"
-      }
-    >
-      {socialMediaLinks.map((socialMedia, index) => (
-        <a
-          key={index}
-          href={socialMedia.link}
-          target="_blank"
-          rel="noreferrer"
-          className={
-            "text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent " +
-            (size === "md" ? "text-3xl lg:text-4xl" : "text-5xl lg:text-9xl")
-          }
-          aria-label={socialMedia.link_alt}
-        >
-          <i className={socialMedia.icon}></i>
-        </a>
-      ))}
+    <div className="container mx-auto px-4 flex flex-col items-center text-center gap-10">
+      {/* Section header */}
+      <div className="flex flex-col items-center gap-4">
+        <h1 className="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text">
+          Get In Touch
+        </h1>
+        <p className="text-lg text-text/60 dark:text-dk-text/60 max-w-md mt-4">
+          Feel free to reach out for collaborations, opportunities, or just to say hello!
+        </p>
+      </div>
+
+      {/* Social links */}
+      <div className="flex flex-col sm:flex-row gap-4 w-full max-w-2xl">
+        {socialMediaLinks.map((social, index) => (
+          <a
+            key={index}
+            href={social.link}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={social.label}
+            className="flex-1 flex flex-col items-center gap-3 p-6 bg-card-bg dark:bg-dk-card-bg border border-secondary/20 hover:border-secondary rounded-2xl hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300 group"
+          >
+            <div className="w-14 h-14 rounded-full bg-secondary/10 group-hover:bg-secondary flex items-center justify-center transition-all duration-300">
+              <i
+                className={`${social.icon} text-2xl text-secondary group-hover:text-white transition-colors duration-300`}
+              />
+            </div>
+            <div>
+              <p className="font-semibold text-text dark:text-dk-text">{social.label}</p>
+              <p className="text-xs text-text/50 dark:text-dk-text/50 mt-0.5">{social.value}</p>
+            </div>
+          </a>
+        ))}
+      </div>
+
+      {/* CTA */}
+      <a
+        href={`mailto:${contact.email}`}
+        className="inline-flex items-center gap-2 bg-secondary hover:bg-accent text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-secondary/30 text-lg"
+      >
+        <i className="fas fa-paper-plane" />
+        Send a Message
+      </a>
     </div>
   );
 }

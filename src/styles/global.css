@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 body {
-  font-family: "Roboto", sans-serif;
+  font-family: "Iansui", "Inter", sans-serif;
   margin: 0;
   padding: 0;
 }
+
 html {
   scroll-behavior: smooth;
 }
@@ -20,81 +21,229 @@ html.dark {
   scrollbar-color: theme(colors.dk-secondary) theme(colors.dk-primary);
 }
 
-h1 {
+h1, h2, h3, h4 {
+  font-family: "Space Grotesk", "Iansui", sans-serif;
   margin: 0;
   padding: 0;
+}
+
+h1 {
   font-size: 2.5rem;
   line-height: 2.5rem;
   font-weight: bold;
-  color: theme(colors.secondary);
+  color: theme(colors.text);
 }
 
 h2 {
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;
-  color: theme(colors.secondary);
+  color: theme(colors.text);
 }
 
 h3 {
   font-size: 1.25rem;
   line-height: 1.75rem;
   font-weight: 500;
-  color: theme(colors.secondary);
+  color: theme(colors.text);
 }
 
 h4 {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 400;
-  color: theme(colors.secondary);
+  color: theme(colors.text);
 }
 
 p {
   font-size: 1rem;
   line-height: 1.5rem;
   font-weight: 400;
-}
-
-h2,
-p {
   color: theme(colors.text);
 }
-html.dark h1 {
-  color: theme(colors.dk-secondary);
-}
 
+html.dark h1,
 html.dark h2,
 html.dark h3,
 html.dark h4 {
-  color: theme(colors.dk-secondary);
+  color: theme(colors.dk-text);
 }
 
 html.dark p {
   color: theme(colors.dk-text);
 }
 
-html,
-body {
+html {
   overflow-x: hidden;
+}
+
+body {
+  overflow-x: clip;
 }
 
 * {
   overflow-wrap: break-word !important;
   word-wrap: break-word !important;
-  transition: color 0.25s linear;
-  -webkit-transition: color 0.25s linear;
-  -moz-transition: color 0.25s linear;
-  -ms-transition: color 0.25s linear;
-  -o-transition: color 0.25s linear;
+  transition: color 0.25s linear, background-color 0.25s linear;
+  -webkit-transition: color 0.25s linear, background-color 0.25s linear;
 }
 
 *::selection {
-  background-color: theme(colors.text) !important;
+  background-color: theme(colors.secondary) !important;
   color: theme(colors.primary) !important;
 }
 
 html.dark *::selection {
-  background-color: theme(colors.dk-text) !important;
+  background-color: theme(colors.dk-secondary) !important;
   color: theme(colors.dk-primary) !important;
+}
+
+/* Section title with yellow underline accent */
+.section-heading {
+  position: relative;
+  display: inline-block;
+  padding-bottom: 0.5rem;
+}
+
+.section-heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 50%;
+  height: 4px;
+  background-color: theme(colors.secondary);
+  border-radius: 2px;
+}
+
+/* Yellow card left-border style */
+.card-accent {
+  border-left: 4px solid theme(colors.secondary);
+}
+
+/* --- Project carousel: position the dots vertically on the right --- */
+.project-carousel .slick-slider {
+  position: static; /* dots anchor to the padded carousel, not the card area */
+}
+
+.project-carousel .slick-dots {
+  top: 50%;
+  right: 0.5rem;
+  bottom: auto;
+  left: auto;
+  width: auto;
+  transform: translateY(-50%);
+  display: flex !important;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.project-carousel .slick-dots li {
+  margin: 0;
+  width: 20px;
+  height: 20px;
+}
+
+/* --- Homepage: snap each full-screen section into view (large screens) --- */
+@media (min-width: 1024px) {
+  html.snap-page {
+    scroll-snap-type: y proximity;
+  }
+}
+
+/* Slick dots in brand yellow */
+.slick-dots li button:before {
+  color: theme(colors.secondary) !important;
+  opacity: 0.3;
+  font-size: 8px;
+}
+
+.slick-dots li.slick-active button:before {
+  color: theme(colors.secondary) !important;
+  opacity: 1;
+}
+
+/* --- Hero: cycling gradient name --- */
+.animated-gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    #eab308,
+    #f59e0b,
+    #b45309,
+    #f59e0b,
+    #eab308
+  );
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  animation: gradient-shift 5s linear infinite;
+}
+
+html.dark .animated-gradient-text {
+  background-image: linear-gradient(
+    90deg,
+    #fde047,
+    #fbbf24,
+    #f59e0b,
+    #fbbf24,
+    #fde047
+  );
+}
+
+@keyframes gradient-shift {
+  to {
+    background-position: -200% center;
+  }
+}
+
+/* --- Hero: gentle float (photo + background keywords) --- */
+@keyframes float-slow {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+/* --- Hidden scrollbar (still scrollable) --- */
+.no-scrollbar {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* --- Vertical scroll areas (projects / blog) --- */
+.scroll-area {
+  scrollbar-width: thin;
+}
+
+.scroll-area::-webkit-scrollbar {
+  width: 8px;
+}
+
+.scroll-area::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scroll-area::-webkit-scrollbar-thumb {
+  background-color: theme(colors.secondary);
+  border-radius: 9999px;
+}
+
+html.dark .scroll-area::-webkit-scrollbar-thumb {
+  background-color: theme(colors.dk-secondary);
+}
+
+/* Respect reduced-motion preference */
+@media (prefers-reduced-motion: reduce) {
+  .animated-gradient-text,
+  .animate-\[float-slow_6s_ease-in-out_infinite\] {
+    animation: none !important;
+  }
 }

@@ -1,48 +1,26 @@
 ---
-const K = 2; // Number of recent posts to display
+import BlogCarousel from "./BlogCarousel";
 
+// `posts` arrive pre-sorted with { title, date, url, excerpt }.
 const { posts } = Astro.props;
-
-const recentPosts = posts
-  .sort((a, b) => {
-    return (
-      new Date(b.frontmatter.date).getTime() -
-      new Date(a.frontmatter.date).getTime()
-    );
-  })
-  .slice(0, K);
+const base = import.meta.env.BASE_URL; // "/" with no base configured
 ---
 
-<div class="flex flex-col lg:flex-row justify-evenly">
-  <header class="mb-8">
-    <h1 class="mb-2">Blog</h1>
-    <h2 class="mb-4 text-text dark:text-dk-text">Recent Posts from the Blog</h2>
-  </header>
-  <div>
-    {
-      recentPosts.map((post, index) => (
-        <div class="mb-8">
-          <h1 class="mb-2">
-            <a href={post.url}>{post.frontmatter.title}</a>
-          </h1>
-          <p>{post.frontmatter.description}</p>
-          <p class="text-gray-600 dark:text-gray-400">
-            {post.frontmatter.date}
-          </p>
-          <a
-            class="text-secondary dark:text-dk-secondary hover:text-accent dark:hover:text-dk-accent"
-            href={post.url}
-          >
-            Read more &rarr;
-          </a>
-          <div class="border-t border-gray-200 dark:border-dk-gray-800 my-8" />
-        </div>
-      ))
-    }
-    <div class="text-right mt-4 text-secondary dark:text-dk-secondary">
-      <a class="hover:text-accent dark:hover:text-dk-accent" href="/posts">
-        Read more posts</a
-      >
-    </div>
+<div class="container mx-auto px-4 h-full flex flex-col pt-20 pb-8">
+  <!-- Section header -->
+  <div class="mb-6 flex-shrink-0">
+    <h1
+      class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text"
+    >
+      Blog
+    </h1>
+    <p class="mt-4 text-text/50 dark:text-dk-text/50 text-lg">
+      Notes &amp; paper reading on GenAI, RAG, and the systems I build.
+    </p>
+  </div>
+
+  <!-- Horizontal auto-rotating carousel (dots + All Posts share a row inside) -->
+  <div class="flex-1 min-h-0 sm:overflow-hidden flex flex-col justify-center">
+    <BlogCarousel posts={posts} client:only="react" />
   </div>
 </div>

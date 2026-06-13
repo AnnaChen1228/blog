@@ -6,30 +6,45 @@ interface ExperienceProps {
 }
 
 export default function Experience(props: ExperienceProps) {
-  const { experience: experience } = props;
+  const { experience } = props;
 
-  return experience.length == 0 ? (
-    <div></div>
-  ) : (
-    <div className="flex flex-col space-y-4 lg:w-1/2 mx-4">
-      <h1 className="text-3xl font-bold">Experience</h1>
-      {experience.map((exp, index) => (
-        <div className="flex flex-col space-y-2 relative" key={index}>
-          <div className="flex items-center space-x-2">
-            <i className="fas fa-briefcase text-2xl text-secondary dark:text-dk-secondary dark:hover:text-dk-accent hover:text-accent z-10"></i>
-            <h2 className="text-xl font-semibold">{exp.title}</h2>
-          </div>
-          <div className="relative left-10 w-full">
-            <p className="text-xl font-normal">{exp.date}</p>
-            <p className="text-xl font-normal">{exp.location}</p>
-            <p className="text-xl font-normal whitespace-pre-wrap">{exp.description}</p>
-          </div>
+  if (experience.length === 0) return <div />;
 
-          {index !== experience.length - 1 && (
-            <div className="absolute top-3.5 left-[0.655rem] h-full w-1 bg-secondary dark:bg-dk-secondary hover:bg-accent dark:hover:bg-dk-accent -z-10"></div>
-          )}
-        </div>
-      ))}
+  return (
+    <div className="flex flex-col space-y-6">
+      <h2 className="text-2xl font-display font-bold section-heading text-text dark:text-dk-text pb-2">
+        Experience
+      </h2>
+
+      <div className="relative flex flex-col space-y-6">
+        {/* Vertical timeline line */}
+        <div className="absolute left-3 top-3 bottom-3 w-0.5 bg-secondary/30 rounded-full" />
+
+        {experience.map((exp, index) => (
+          <div key={index} className="relative flex gap-4">
+            {/* Dot */}
+            <div className="flex-shrink-0 mt-1">
+              <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center z-10 relative shadow-md shadow-secondary/30">
+                <i className="fas fa-briefcase text-white text-xs" />
+              </div>
+            </div>
+
+            {/* Content card */}
+            <div className="flex-1 bg-card-bg dark:bg-dk-card-bg rounded-xl p-4 border border-secondary/20 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200">
+              <h3 className="font-semibold text-base text-text dark:text-dk-text mb-0.5">
+                {exp.title}
+              </h3>
+              <p className="text-secondary font-semibold text-sm">{exp.company}</p>
+              <p className="text-text/50 dark:text-dk-text/50 text-xs mt-1">
+                {exp.date} · {exp.location}
+              </p>
+              <p className="mt-3 text-sm leading-relaxed text-text/70 dark:text-dk-text/70 whitespace-pre-wrap">
+                {exp.description}
+              </p>
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

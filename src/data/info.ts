@@ -1,80 +1,219 @@
+// Astro `base` prefix (e.g. "/blog/") so assets resolve on GitHub Pages subpath
+const base = import.meta.env.BASE_URL;
+
 export const info = {
   name: "Anna Chen",
+  full_name: "Kuan-Jung (Anna) Chen",
   brief_description:
-    "I'm a CS grad student specializing in NLP and full-stack development, turning complex data into meaningful insights.",
-  role: "CS Grad Student",
-  picture: "/picture.jpg",
-  picture_alt: "Bart Simpson",
+    "M.S. in CS @ NCU specializing in GenAI Agents, RAG, and full-stack development — bridging research (CIKM / TAAI) and engineering.",
+  role: "GenAI / NLP Researcher · Full-Stack Developer",
+  picture: `${base}picture.jpg`,
+  picture_alt: "Anna Chen",
   location: "New Taipei City, Taiwan",
-  cv: "/cv.pdf",
+  cv: `${base}Anna_cv.pdf`,
+
+  // Floating keywords in the hero background — concepts & personality, not tools.
+  // Edit/add/remove freely.
+  hero_keywords: [
+    "RAG",
+    "MAS",
+    "Full-stack",
+    "GenAI",
+    "NLP",
+    "Curious",
+    "Problem Solver",
+    "Detail-oriented",
+    "Fast Learner",
+  ],
 
   about: {
-    description: `I'm a CS graduate student diving into the world of AI and full-stack development. 
-    Passionate about NLP and deep learning, while exploring the art of web development. 
-    When I'm not training models or learning new tech stacks, you'll find me turning ideas into code. 
-    Let's grow and build something meaningful together!
-    `,
+    description: `I'm a CS master's student at National Central University focused on Generative AI — building LLM agents, RAG pipelines, and the full-stack systems around them. My work bridges academic research (CIKM, TAAI) and real engineering, from deploying smart education platforms to optimizing retrieval systems. I love turning messy, complex problems into clear, useful tools.`,
+
     education: [
       {
-        "title": "Master of Computer Science and Information Engineering",
-        "date": "2024 - Present",
-        "location": "National Central University",
-        "research": "Natural Language Processing and Legal Text Analysis",
-        "thesis": [{name : "Understanding Students Through Dialogue: A Dialogue Knowledge Tracing System for Learning Analytics", conference: "CIKM 2025"},
-          {name : "DREAM: 結合領域知識檢索與多代理推理的結構化論文評估方法",conference: "TAAI 2025"}
-        ]
+        title: "M.S. in Computer Science & Information Engineering",
+        date: "2024 - Present",
+        location: "National Central University",
+        gpa: "4.1/4.3",
+        research: "Generative AI, RAG, and NLP",
+        thesis: [
+          {
+            name: "A Dialogue Knowledge Tracing System for Learning Analytics",
+            conference: "CIKM 2025 (ProActLLM)",
+          },
+          {
+            name: "Domain-Retrieved Evidence and Multi-Agent Reasoning for Structured Paper Evaluation",
+            conference: "TAAI 2025",
+          },
+        ],
       },
       {
-        "title": "Bachelor of Computer Science and Engineering",
-        "date": "2020 - 2024",  
-        "location": "Yuan-Ze University",
-        "gpa": "3.56/4",
-        "thesis": [{name: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods", conference: "112 大專生計畫"}]
-      }
-    ],
-    experience: [
-      {
-        "title": "Application Services Intern",
-        "date": "2024.02 - 2024.07",
-        "company": "Telecom Technology Center",
-        "location": "Taiwan",
-        "description":  "- Participated in ERP system implementation evaluation and bidding process\n- Executed database migration projects and ensured data integrity\n- Conducted comprehensive web application testing and documentation"
-      }
+        title: "B.S. in Computer Science & Engineering",
+        date: "2020 - 2024",
+        location: "Yuan-Ze University",
+        gpa: "3.8/4.0",
+        thesis: [
+          {
+            name: "Improving Bug Report Summarization Using Deep Learning Methods",
+            conference: "NSTC 112th College Student Research",
+          },
+        ],
+      },
     ],
 
-    skills: ["JavaScript", "React", "Node.js", "MongoDB", "Prank Mastery"], // not used yet
+    experience: [
+      {
+        title: "Research Assistant",
+        date: "2025.02 - Present",
+        company: "NCU WIDM Lab",
+        location: "Taiwan",
+        description:
+          "- Built and maintain the official lab website (full-stack)\n- Manage GPU server infrastructure: user provisioning, troubleshooting & uptime monitoring for 10+ researchers",
+      },
+      {
+        title: "Teaching Assistant — Artificial Intelligence",
+        date: "2025.09 - 2026.01",
+        company: "NCU CSIE",
+        location: "Taiwan",
+        description:
+          "- Designed ML assignments (multi-class classification, sequence labeling) for 50+ students\n- Evaluated project architectures and provided technical mentorship",
+      },
+      {
+        title: "Application Services Intern",
+        date: "2024.02 - 2024.06",
+        company: "Telecom Technology Center (TTC)",
+        location: "Taiwan",
+        description:
+          "- Executed database migration projects ensuring data integrity\n- Ran web stress testing to verify system stability post-deployment",
+      },
+    ],
+
+    // Honors, awards & grants
+    honors: [
+      {
+        title: "1st Place — TSMC IT CareerHack (Group B)",
+        detail: "Semiconductor Supply Chain Intelligent Assistant",
+        date: "2026",
+        icon: "fas fa-trophy",
+      },
+      {
+        title: "Paper Accepted — CIKM 2025 (ProActLLM Workshop)",
+        detail: "A Dialogue Knowledge Tracing System for Learning Analytics",
+        date: "2025",
+        icon: "fas fa-file-lines",
+      },
+      {
+        title: "Paper Accepted — TAAI 2025",
+        detail:
+          "Domain-Retrieved Evidence & Multi-Agent Reasoning for Structured Paper Evaluation",
+        date: "2025",
+        icon: "fas fa-file-lines",
+      },
+      {
+        title: "NCU CSIE Outstanding Student Scholarship",
+        detail: "National Central University",
+        date: "2024",
+        icon: "fas fa-award",
+      },
+      {
+        title: "NSTC College Student Research Grant",
+        detail: "112th — Bug Report Summarization",
+        date: "2023",
+        icon: "fas fa-medal",
+      },
+    ],
+
+    // Skills grouped by category
+    skills: [
+      {
+        category: "LLM & Agents",
+        items: [
+          "OpenAI / Gemini API",
+          "Local LLM (Ollama)",
+          "RAG / LightRAG",
+          "Multi-Agent Systems",
+          "Knowledge Graph",
+        ],
+      },
+      {
+        category: "ML / NLP",
+        items: ["PyTorch", "BERT", "RoBERTa", "mT5", "XGBoost"],
+      },
+      {
+        category: "Web",
+        items: ["React", "Vue", "Socket.io", "FastAPI", "MongoDB"],
+      },
+      {
+        category: "Infra",
+        items: ["Python", "SQL", "Docker", "Git", "Linux"],
+      },
+    ],
   },
 
   projects: [
     {
-      title: "Improving the Performance of Bug Report Summarization Using Deep Learning Methods",
-      date: "2024",
+      title: "Semiconductor Supply Chain Intelligent Assistant",
+      date: "2026",
+      badge: "🥇 1st — TSMC CareerHack",
       description:
-        "Improved bug report analysis efficiency using deep learning and intent detection",
+        "Hybrid RAG + Knowledge Graph (Neo4j) multi-agent system analyzing financial reports, earnings calls & news for supply-chain intelligence and a SEMI-AI Q&A assistant.",
+      link: "https://github.com/AnnaChen1228",
+      tech: ["Python", "Multi-Agent", "RAG", "Knowledge Graph", "Neo4j"],
+      icon: "fas fa-microchip",
+      img_alt: "Semiconductor Supply Chain Assistant",
+    },
+    {
+      title: "CoSci — Scientific Modeling System",
+      date: "2025 - Present",
+      description:
+        "Visual ModelFlow + state-aware Multi-Agent System guiding students from physics observation to computational models. Deployed in 30+ high-school camps; F1 0.86–0.93.",
+      link: "https://cosci.tw/",
+      tech: ["React", "Socket.io", "MAS", "LLMs", "MongoDB"],
+      icon: "fas fa-atom",
+      img_alt: "CoSci Scientific Modeling System",
+    },
+    {
+      title: "MOST — Reviewer Recommendation System",
+      date: "2025 - Present",
+      description:
+        "Multi-dimensional RAG with a local 120B LLM and field-specific vector DBs (bge-zh-v1.5). Dynamic weighting balances reviewer workload with 8–15% cross-dimension overlap.",
+      link: "https://github.com/AnnaChen1228/MOST_committee",
+      tech: ["Python", "RAG", "Local LLM", "Vector DB"],
+      icon: "fas fa-user-group",
+      img_alt: "MOST Reviewer Recommendation System",
+    },
+    {
+      title: "EduACT — No-Code AI TA Platform",
+      date: "2024 - Present",
+      badge: "CIKM 2025",
+      description:
+        "No-code platform for teachers to deploy AI teaching assistants. Integrated OpenAI Assistant API + LightRAG class-level analytics; adopted at NCCU, NCU & high schools.",
+      link: "https://eduact.csie.ncu.edu.tw/",
+      tech: ["FastAPI", "OpenAI API", "Vue", "SQL", "LightRAG"],
+      icon: "fas fa-chalkboard-user",
+      img_alt: "EduACT Platform",
+    },
+    {
+      title: "Traffic Accident Report Extraction",
+      date: "2024 - 2025",
+      description:
+        "Extracted 35 structured features from accident reports using BERT, RoBERTa & mT5 with Cohen's Kappa evaluation; applied data augmentation to mitigate label sparsity.",
+      link: "https://github.com/AnnaChen1228",
+      tech: ["BERT", "mT5", "NLP", "Python"],
+      icon: "fas fa-car-burst",
+      img_alt: "Traffic Accident Report Extraction",
+    },
+    {
+      title: "Bug Report Summarization",
+      date: "2023 - 2024",
+      badge: "NSTC Grant",
+      description:
+        "Extractive summarization fusing user-intent with 36 statistical features. SVM achieved the best F-score (0.519), cutting developers' bug-reading time.",
       link: "https://github.com/AnnaChen1228/Improving-the-Performance-of-Bug-Report-Summarization-Using-Deep-Learning-Methods",
-      tech: ["Python", "NLP"],
-      img_alt: "BRC",
-      img_path: "/BRC.jpg",
-    },
-    {
-      title: "Photo Booth",
-      date: "2023",
-      description:
-        "Modern photo booth app with instant filters and video creation 📸✨",
-      link: "hhttps://github.com/AnnaChen1228/Photo-booth",
-      tech: ["Python","OpenCV","Selenium"],
-      img_alt: "Photo Booth",
-      img_path: "photo_booth.jpg",
-    },
-    {
-      title: "Scheduling System",
-      date: "2024",
-      description:
-        "Smart staff scheduling system for convenience stores 📅",
-      link: "https://github.com/bartsimpsonfake/comic-club",
-      tech: ["Python", "SQL", "JavaScript", "CSS","HTML"],
-      img_alt: "Scheduling System",
-      img_path: "scheduling_system.jpg",
+      tech: ["Deep Learning", "XGBoost", "SVM", "Python"],
+      icon: "fas fa-bug",
+      img_path: `${base}BRC.jpg`,
+      img_alt: "Bug Report Summarization",
     },
   ],
 
@@ -82,6 +221,5 @@ export const info = {
     email: "angelachen572@gmail.com",
     linkedin: "https://www.linkedin.com/in/anna-chen-5a93a3300/",
     github: "https://github.com/AnnaChen1228",
-    // twitter: "https://www.twitter.com/bartsimpsonfake",
   },
 };

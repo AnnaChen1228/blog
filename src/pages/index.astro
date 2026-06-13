@@ -1,139 +1,300 @@
 ---
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { info } from "../data/info";
-import ProjectCarousel from "../components/project_section/ProjectCarousel";
+import ProjectList from "../components/project_section/ProjectList.astro";
+import Blog from "../components/post_section/Blog.astro";
 import Contact from "../components/contact_section/Contact";
 import About from "../components/about_section/About";
-import Blog from "../components/post_section/Blog.astro";
+import SectionDots from "../components/SectionDots";
 
-import { Image } from "astro:assets";
+// Build a short plain-text excerpt from a post's frontmatter description,
+// falling back to the first lines of the markdown body.
+function makeExcerpt(raw: string, desc?: string) {
+  if (desc && desc.trim()) return desc.trim();
+  const text = (raw || "")
+    .replace(/```[\s\S]*?```/g, " ") // fenced code blocks
+    .replace(/`[^`]*`/g, " ") // inline code
+    .replace(/!\[[^\]]*\]\([^)]*\)/g, " ") // images
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // links -> text
+    .replace(/^\s*#{1,6}\s+.*$/m, "") // drop first heading (usually repeats the title)
+    .replace(/^\s*#{1,6}\s+/gm, "") // remaining heading markers
+    .replace(/^\s*\|?[\s:|-]*\|[\s:|-]*$/gm, " ") // table separator rows
+    .replace(/\|/g, " ") // table pipes
+    .replace(/-{3,}/g, " ") // long dash runs
+    .replace(/[*_>#~→›]/g, " ") // md symbols & arrows
+    .replace(/\s+/g, " ")
+    .trim();
+  return text.length > 140 ? text.slice(0, 140).trim() + "…" : text;
+}
 
-const allPosts = await Astro.glob("./posts/*.md");
+const posts = (await Astro.glob("./posts/*.md"))
+  .map((p) => ({
+    title: p.frontmatter.title,
+    date: p.frontmatter.date,
+    url: p.url ?? "/posts",
+    excerpt: makeExcerpt(
+      typeof p.rawContent === "function" ? p.rawContent() : "",
+      p.frontmatter.description
+    ),
+  }))
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+
+// Keyword text comes from info.ts; these are just presentation slots
+// (position / size / animation timing) that cycle to fit any number of words.
+const keywordSlots = [
+  { top: "14%", left: "6%", size: "2.25rem", dur: 7, delay: 0 },
+  { top: "26%", left: "52%", size: "1.5rem", dur: 9, delay: 1.2 },
+  { top: "68%", left: "10%", size: "2.5rem", dur: 8, delay: 0.6 },
+  { top: "80%", left: "46%", size: "1.5rem", dur: 10, delay: 2 },
+  { top: "42%", left: "72%", size: "1.75rem", dur: 7.5, delay: 1.8 },
+  { top: "55%", left: "28%", size: "1.5rem", dur: 8.5, delay: 0.3 },
+  { top: "16%", left: "34%", size: "1.5rem", dur: 9.5, delay: 2.4 },
+  { top: "86%", left: "76%", size: "1.75rem", dur: 8, delay: 1 },
+  { top: "8%", left: "70%", size: "1.5rem", dur: 8, delay: 1.5 },
+  { top: "48%", left: "3%", size: "2rem", dur: 9, delay: 0.9 },
+];
+const heroKeywords = info.hero_keywords.map((text, i) => ({
+  text,
+  ...keywordSlots[i % keywordSlots.length],
+}));
 ---
 
-<BaseLayout title="Home">
-  <section class="lg:h-screen lg:m-0 my-20 mx-2" id="home">
+<BaseLayout title="Home" bleed={true}>
+  <SectionDots client:only="react" />
+
+  <!-- Hero Section -->
+  <section
+    class="snap-start min-h-screen relative overflow-hidden flex items-center bg-gradient-to-br from-secondary/[0.08] via-transparent to-secondary/[0.12] dark:from-dk-secondary/[0.06] dark:via-transparent dark:to-dk-secondary/[0.10]"
+    id="home"
+  >
+    <!-- Background decorations -->
     <div
-      class="flex flex-col lg:flex-row justify-center items-center h-full space-y-4"
+      class="absolute -top-40 -right-40 w-[500px] h-[500px] bg-secondary/10 dark:bg-secondary/5 rounded-full blur-3xl pointer-events-none"
     >
-      <div class="profile-pic">
-        <Image
+    </div>
+    <div
+      class="absolute bottom-0 -left-20 w-64 h-64 bg-secondary/8 dark:bg-secondary/5 rounded-full blur-2xl pointer-events-none"
+    >
+    </div>
+    <!-- Floating tech-keyword background (fills the whitespace on large screens) -->
+    <div
+      class="absolute inset-0 hidden lg:block overflow-hidden pointer-events-none"
+      aria-hidden="true"
+    >
+      {
+        heroKeywords.map((kw) => (
+          <span
+            class="absolute font-display font-bold text-secondary/[0.14] dark:text-dk-secondary/[0.18] select-none whitespace-nowrap"
+            style={`top:${kw.top};left:${kw.left};font-size:${kw.size};animation:float-slow ${kw.dur}s ease-in-out ${kw.delay}s infinite;`}
+          >
+            {kw.text}
+          </span>
+        ))
+      }
+    </div>
+
+    <div
+      class="container mx-auto relative z-10 flex flex-col sm:flex-row items-center gap-8 sm:gap-8 lg:gap-16 px-4 py-12"
+    >
+      <!-- Left: Text -->
+      <div class="flex flex-col space-y-5 sm:flex-1 text-center sm:text-left">
+        <div
+          class="inline-flex items-center gap-2 bg-secondary/10 border border-secondary/30 rounded-full px-4 py-1.5 w-fit mx-auto sm:mx-0"
+        >
+          <span class="w-2 h-2 bg-secondary rounded-full animate-pulse"></span>
+          <span class="text-secondary text-sm font-semibold"
+            >{info.role}</span
+          >
+        </div>
+
+        <div>
+          <p class="text-lg font-medium mb-2 text-text/50 dark:text-dk-text/50">
+            Hi there, I'm
+          </p>
+          <h1
+            class="text-5xl lg:text-7xl xl:text-8xl font-display font-bold leading-none"
+          >
+            <span class="animated-gradient-text">
+              {info.name.split(" ")[0]}<br />{info.name.split(" ")[1]}
+            </span>
+          </h1>
+        </div>
+
+        <p class="text-lg text-text/70 dark:text-dk-text/70 max-w-lg leading-relaxed mx-auto sm:mx-0">
+          {info.brief_description}
+        </p>
+
+        <p class="text-text/50 dark:text-dk-text/50 text-sm font-medium mx-auto sm:mx-0">
+          <i class="fas fa-map-marker-alt mr-2 text-secondary"></i>
+          {info.location}
+        </p>
+
+        <div
+          class="flex flex-wrap items-center gap-4 justify-center sm:justify-start pt-2"
+        >
+          <a
+            href={info.cv}
+            download
+            class="inline-flex items-center gap-2 bg-secondary hover:bg-accent text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-secondary/30"
+          >
+            <i class="fas fa-download text-sm"></i>
+            Download CV
+          </a>
+          <a
+            href="/#contact"
+            class="inline-flex items-center gap-2 border-2 border-secondary text-secondary hover:bg-secondary hover:text-white font-semibold px-6 py-3 rounded-full transition-all duration-200"
+          >
+            Contact Me
+          </a>
+        </div>
+      </div>
+
+      <!-- Right: Photo (clean — the yellow now washes the whole hero) -->
+      <div class="relative flex-shrink-0 mx-auto sm:mx-0">
+        <img
           src={info.picture}
           alt={info.picture_alt}
-          width={200}
-          height={200}
-          class="lg:h-96 lg:w-96 h-40 w-40 rounded-full object-fill object-center space-x-8"
+          width="320"
+          height="320"
+          class="relative h-40 w-40 sm:h-44 sm:w-44 md:h-60 md:w-60 lg:h-80 lg:w-80 rounded-3xl object-cover shadow-2xl ring-1 ring-secondary/20 animate-[float-slow_6s_ease-in-out_infinite]"
         />
       </div>
+    </div>
 
-      <div class="flex flex-col lg:mx-8 leading-relaxed space-y-4">
-        <h1 class="text-3xl lg:text-5xl font-bold font-serif">
-          Hi, I'm <span class="bg-clip-text animate-pulse typewriter">
-            {info.name}</span
-          >
+    <!-- Scroll indicator -->
+    <a
+      href="#about"
+      aria-label="Scroll to About"
+      class="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-1 animate-bounce cursor-pointer hover:opacity-80 transition-opacity"
+    >
+      <span class="text-xs text-text/30 dark:text-dk-text/30 font-medium tracking-widest uppercase">scroll</span>
+      <i class="fas fa-chevron-down text-secondary text-sm"></i>
+    </a>
+  </section>
+
+  <!-- About Section -->
+  <section class="snap-start min-h-screen sm:h-screen pt-20 pb-4 flex flex-col" id="about">
+    <!-- Pinned title so you always know which section you're in -->
+    <div class="w-full flex justify-center flex-shrink-0 mb-4">
+      <div class="w-full lg:w-3/4 xl:w-2/3 px-4">
+        <h1 class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text">
+          About Me
         </h1>
-        <h2 class="text-text dark:text-dk-text">{info.brief_description}</h2>
-        <p class="text-2xl">
-          Based in <span class="text-secondary dark:text-dk-secondary"
-            >{info.location}</span
-          >
-        </p>
       </div>
     </div>
-  </section>
-  <section class="lg:m-0
-        my-20
-        mx-2" id="about">
-    <About about={info.about} client:visible />
+    <div class="flex-1 min-h-0 overflow-y-auto inner-scroll no-scrollbar">
+      <About about={info.about} showHeading={false} client:visible />
+    </div>
   </section>
 
+  <!-- Projects Section -->
   <section
-    class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
+    class="snap-start min-h-screen sm:h-screen w-full"
     id="projects"
   >
-    <ProjectCarousel projects={info.projects} client:only />
+    <ProjectList projects={info.projects} />
   </section>
 
+  <!-- Blog Section -->
   <section
-    class="lg:h-screen lg:m-0 my-20 flex-col flex justify-center w-full"
+    class="snap-start min-h-screen sm:h-screen w-full"
     id="blog"
   >
-    <Blog posts={allPosts} />
+    <Blog posts={posts} />
   </section>
 
+  <!-- Contact Section -->
   <section
-    class="lg:h-screen lg:m-0 my-20 mx-2 flex-col flex justify-center w-full"
+    class="snap-start min-h-screen sm:h-screen pt-20 pb-6 flex flex-col justify-center w-full"
     id="contact"
   >
-    <div class="flex flex-row justify-center items-center h-full space-y-4">
-      <Contact contact={info.contact} size="lg" />
-    </div>
+    <Contact contact={info.contact} size="lg" />
   </section>
 </BaseLayout>
 
-<style>
-  .typewriter {
-    background: linear-gradient(to left, #3333ff, #efff15, #ff0000);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-    animation: animation 6s ease-in-out infinite;
-    background-size: 400% 100%;
+<script>
+  // Homepage: eased "one section per screen" (wheel, large screens) plus eased
+  // scrolling for in-page anchor links (nav, section dots, hero arrow).
+  document.documentElement.style.scrollBehavior = "auto"; // JS owns the easing
+
+  const mq = window.matchMedia("(min-width: 640px)");
+  const secs = Array.from(document.querySelectorAll("section[id]"));
+
+  let animating = false;
+  let lockUntil = 0;
+  let rafId: number | null = null;
+
+  // ease-out: responds immediately, settles gently (less "stiff")
+  const ease = (t: number) => 1 - Math.pow(1 - t, 3);
+
+  function topOf(el: Element) {
+    return el.getBoundingClientRect().top + window.scrollY;
   }
 
-  @keyframes animation {
-    0%,
-    100% {
-      background-position: 0 0;
-    }
-
-    50% {
-      background-position: 100% 0;
-    }
+  function smoothScrollTo(targetY: number, duration = 600) {
+    if (rafId) cancelAnimationFrame(rafId);
+    const startY = window.scrollY;
+    const dist = targetY - startY;
+    if (Math.abs(dist) < 1) return;
+    let startTime: number | null = null;
+    animating = true;
+    const step = (now: number) => {
+      if (startTime === null) startTime = now;
+      const t = Math.min((now - startTime) / duration, 1);
+      window.scrollTo(0, startY + dist * ease(t));
+      if (t < 1) {
+        rafId = requestAnimationFrame(step);
+      } else {
+        rafId = null;
+        animating = false;
+        lockUntil = Date.now() + 150;
+      }
+    };
+    rafId = requestAnimationFrame(step);
   }
 
-  /* Shadow effect shifting through the image: inspired by https://codepen.io/davidicus/pen/emgQKJ */
-  .profile-pic {
-    position: relative;
-    display: inline-block;
-    overflow: hidden;
-    border-radius: 100%;
+  function currentIndex() {
+    const y = window.scrollY;
+    let idx = 0;
+    secs.forEach((s, i) => {
+      if (topOf(s) <= y + 5) idx = i;
+    });
+    return idx;
   }
 
-  .profile-pic::before {
-    position: absolute;
-    top: 0;
-    left: -75%;
-    z-index: 2;
-    display: block;
-    content: "";
-    width: 50%;
-    height: 100%;
-    background: -webkit-linear-gradient(
-      left,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.3) 100%
-    );
-    -webkit-transform: skewX(-25deg);
-    transform: skewX(-25deg);
-  }
-  .profile-pic:hover::before {
-    -webkit-animation: shine 0.75s;
-    animation: shine 0.75s;
-  }
-  @-webkit-keyframes shine {
-    100% {
-      left: 125%;
+  function onWheel(e: WheelEvent) {
+    if (!mq.matches) return;
+    // Let an inner scrollable area (e.g. About) scroll until its edge first.
+    const inner =
+      e.target instanceof Element ? e.target.closest(".inner-scroll") : null;
+    if (inner) {
+      const atTop = inner.scrollTop <= 0;
+      const atBottom =
+        inner.scrollTop + inner.clientHeight >= inner.scrollHeight - 1;
+      if ((e.deltaY > 0 && !atBottom) || (e.deltaY < 0 && !atTop)) return;
     }
+    e.preventDefault();
+    if (animating || Date.now() < lockUntil || Math.abs(e.deltaY) < 4) return;
+    const i = currentIndex() + (e.deltaY > 0 ? 1 : -1);
+    if (i >= 0 && i < secs.length) smoothScrollTo(topOf(secs[i]));
   }
-  @keyframes shine {
-    100% {
-      left: 125%;
-    }
+
+  function onClick(e: MouseEvent) {
+    const a =
+      e.target instanceof Element
+        ? (e.target.closest('a[href*="#"]') as HTMLAnchorElement | null)
+        : null;
+    if (!a) return;
+    const href = a.getAttribute("href") || "";
+    const hash = href.slice(href.indexOf("#"));
+    if (hash.length < 2) return;
+    const target = document.querySelector(hash);
+    if (!target) return;
+    e.preventDefault();
+    smoothScrollTo(topOf(target));
+    history.pushState(null, "", hash);
   }
-</style>
+
+  window.addEventListener("wheel", onWheel, { passive: false });
+  document.addEventListener("click", onClick);
+</script>

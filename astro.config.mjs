@@ -9,8 +9,8 @@ export default defineConfig({
   markdown: {
     rehypePlugins: [rehypeAccessibleEmojis],
   },
-  // 更新為你的 Vercel 網域，或者你的自定義網域
-  site: 'https://your-project.vercel.app', // 部署後更新為實際的 Vercel URL
+  // 部署在根路徑（無 base），連結維持 /xxx；BASE_URL 會是 "/"
+  site: 'https://annachen1228.github.io',
   integrations: [tailwind(), react(), robotsTxt(), sitemap()],
   // 開發環境的設置
   server: {
@@ -22,5 +22,4 @@ export default defineConfig({
   },
   // 添加輸出配置
   output: 'static',
-  // 確保沒有 base 路徑配置
 });

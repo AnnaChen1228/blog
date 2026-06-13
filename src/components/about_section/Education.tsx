@@ -8,44 +8,61 @@ interface EducationProps {
 export default function Education(props: EducationProps) {
   const { education } = props;
 
-  return education.length == 0 ? (
-    <div />
-  ) : (
-    <div className="flex flex-col space-y-4 lg:w-1/2 mx-4">
-      <h1 className="text-3xl font-bold">Education</h1>
-      {education.map((edu, index) => (
-        <div className="flex flex-col space-y-2 relative" key={index}>
-          <div className="flex items-center space-x-2">
-            <i className="fas fa-graduation-cap text-2xl text-secondary dark:text-dk-secondary dark:hover:text-dk-accent hover:text-accent z-10"></i>
-            <h2 className="text-xl font-semibold">{edu.title}</h2>
-          </div>
-          
-          <div className="relative left-10 w-full">
-            <p className="text-xl font-normal">{edu.date}</p>
-            <p className="text-xl font-normal">{edu.location}</p>
-            {edu.gpa && <p className="text-xl font-normal">GPA: {edu.gpa}</p>}
-            
-            {/* 修改後的論文顯示區塊 */}
-            {edu.thesis && edu.thesis.length > 0 && (
-              <div className="mt-2 flex flex-col space-y-1">
-                <p className="text-xl font-semibold">Publications / Thesis:</p>
-                {edu.thesis.map((item, tIndex) => (
-                  <p key={tIndex} className="text-lg font-normal leading-snug">
-                    <span className="text-accent dark:text-dk-accent">▪</span> {item.name} -- 
-                    <span className="italic text-gray-600 dark:text-gray-400">
-                      {item.conference}
-                    </span>
-                  </p>
-                ))}
-              </div>
-            )}
-          </div>
+  if (education.length === 0) return <div />;
 
-          {index !== education.length - 1 && (
-            <div className="absolute top-4 left-3 h-full w-1 bg-secondary dark:bg-dk-secondary hover:bg-accent dark:hover:bg-dk-accent z-0"></div>
-          )}
-        </div>
-      ))}
+  return (
+    <div className="flex flex-col space-y-6">
+      <h2 className="text-2xl font-display font-bold section-heading text-text dark:text-dk-text pb-2">
+        Education
+      </h2>
+
+      <div className="relative flex flex-col space-y-6">
+        {/* Vertical timeline line */}
+        <div className="absolute left-3 top-3 bottom-3 w-0.5 bg-secondary/30 rounded-full" />
+
+        {education.map((edu, index) => (
+          <div key={index} className="relative flex gap-4">
+            {/* Dot */}
+            <div className="flex-shrink-0 mt-1">
+              <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center z-10 relative shadow-md shadow-secondary/30">
+                <i className="fas fa-graduation-cap text-white text-xs" />
+              </div>
+            </div>
+
+            {/* Content card */}
+            <div className="flex-1 bg-card-bg dark:bg-dk-card-bg rounded-xl p-4 border border-secondary/20 shadow-sm hover:shadow-md hover:border-secondary/40 transition-all duration-200">
+              <h3 className="font-semibold text-base leading-snug text-text dark:text-dk-text mb-1">
+                {edu.title}
+              </h3>
+              <p className="text-secondary font-semibold text-sm">{edu.location}</p>
+              <p className="text-text/50 dark:text-dk-text/50 text-xs mt-1">{edu.date}</p>
+              {edu.gpa && (
+                <span className="inline-block mt-2 text-xs bg-secondary/10 text-secondary font-semibold px-2 py-0.5 rounded-full">
+                  GPA: {edu.gpa}
+                </span>
+              )}
+              {edu.thesis && edu.thesis.length > 0 && (
+                <div className="mt-3 space-y-1.5">
+                  <p className="text-xs font-bold text-text/60 dark:text-dk-text/60 uppercase tracking-wider">
+                    Publications / Thesis
+                  </p>
+                  {edu.thesis.map((item, tIndex) => (
+                    <div key={tIndex} className="flex gap-1.5 items-start">
+                      <span className="text-secondary mt-0.5 text-xs flex-shrink-0">▸</span>
+                      <p className="text-xs leading-relaxed text-text/70 dark:text-dk-text/70">
+                        {item.name}
+                        <span className="italic text-secondary/80 ml-1">
+                          — {item.conference}
+                        </span>
+                      </p>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

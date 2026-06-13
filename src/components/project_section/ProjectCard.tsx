@@ -3,67 +3,84 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 
 interface ProjectCardProps {
-  project: (typeof info)["projects"][number];
+  project: (typeof info)["projects"][number] & {
+    icon?: string;
+    badge?: string;
+    img_path?: string;
+  };
 }
 
 export default function ProjectCard(props: ProjectCardProps) {
   const { project } = props;
+  const hasImg = Boolean(project.img_path);
 
   return (
-    <div className="flex flex-col bg-primary dark:bg-dk-primary rounded-lg">
-      <div className="flex-shrink-0">
-        <a
-          href={project.link}
-          rel="noreferrer"
-          aria-label={project.img_alt + ", click to open the blog page"}
-        >
+    <div className="flex flex-col h-full bg-card-bg dark:bg-dk-card-bg rounded-2xl overflow-hidden border border-secondary/20 hover:border-secondary/50 shadow-sm hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300 group">
+      {/* Header: image OR icon fallback */}
+      <a
+        href={project.link}
+        target="_blank"
+        rel="noreferrer"
+        aria-label={project.img_alt}
+        className="relative flex-shrink-0 block h-40 overflow-hidden"
+      >
+        {hasImg ? (
           <LazyLoadImage
-            className="h-52 w-full object-cover"
+            className="h-40 w-full object-cover group-hover:scale-105 transition-transform duration-500"
             src={project.img_path}
             alt={project.img_alt}
             width="100%"
             effect="blur"
           />
-        </a>
-      </div>
-      <div className="flex-1 bg-primary dark:bg-dk-primary p-6 flex flex-col justify-between">
+        ) : (
+          <div className="h-40 w-full flex items-center justify-center bg-gradient-to-br from-secondary/20 via-secondary/10 to-transparent dark:from-secondary/15 dark:to-dk-card-bg">
+            <i
+              className={`${project.icon ?? "fas fa-code"} text-5xl text-secondary/70 group-hover:scale-110 transition-transform duration-300`}
+            />
+          </div>
+        )}
+
+        {/* Badge */}
+        {project.badge && (
+          <span className="absolute top-3 left-3 bg-secondary text-white text-xs font-bold px-2.5 py-1 rounded-full shadow-md">
+            {project.badge}
+          </span>
+        )}
+      </a>
+
+      {/* Yellow accent bar */}
+      <div className="h-1 bg-gradient-to-r from-secondary to-accent w-full" />
+
+      {/* Content */}
+      <div className="flex-1 p-5 flex flex-col gap-3">
         <div className="flex-1">
-          <p className="text-sm font-medium text-text dark:text-dk-text">
-            <a
-              href={project.link}
-              rel="noreferrer"
-              className="hover:underline"
-              aria-label="Title of the blog, click to open the blog page"
-            >
-              {project.title}
-            </a>
-          </p>
           <a
             href={project.link}
+            target="_blank"
             rel="noreferrer"
-            className="block mt-2"
-            aria-label="Description of the blog, click to open the blog page"
+            className="font-display font-semibold text-base text-text dark:text-dk-text hover:text-secondary dark:hover:text-dk-secondary transition-colors line-clamp-2"
           >
-            <p className="text-xl font-semibold text-gray-900">
-              {project.description}
-            </p>
+            {project.title}
           </a>
+          <p className="mt-2 text-sm text-text/60 dark:text-dk-text/60 leading-relaxed line-clamp-4">
+            {project.description}
+          </p>
         </div>
 
-        <div className="mt-6 flex items-center">
-          <div className="flex flex-wrap space-x-2">
+        <div className="flex flex-col gap-3 mt-auto pt-3 border-t border-secondary/10">
+          <div className="flex flex-wrap gap-1.5">
             {project.tech.map((tech) => (
               <span
-                className="text-accent dark:text-dk-accent text-xs font-semibold"
                 key={tech}
+                className="text-xs font-semibold bg-secondary/10 text-secondary px-2 py-0.5 rounded-full"
               >
-                #{tech}
+                {tech}
               </span>
             ))}
           </div>
-          <p className="ml-auto text-sm font-medium text-gray-900">
+          <span className="text-xs text-text/40 dark:text-dk-text/40 font-medium">
             {project.date}
-          </p>
+          </span>
         </div>
       </div>
     </div>

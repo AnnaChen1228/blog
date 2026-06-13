@@ -34,7 +34,7 @@ const { title, date, img_path, img_alt } = frontmatter;
           class="text-sm lg:text-base px-4 lg:px-0 flex lg:flex-row flex-col items-center justify-between gap-2"
         >
           <span>{date}</span>
-          <a href="/posts" class="hover:underline">Back to posts</a>
+          <a href={`${import.meta.env.BASE_URL}posts`} class="hover:underline">Back to posts</a>
         </p>
       </div>
       {
@@ -57,8 +57,8 @@ const { title, date, img_path, img_alt } = frontmatter;
         <div
           class="*:mb-4 leading-relaxed prose dark:prose-invert max-w-none
         prose-h1:font-bold prose-h1:text-xl
-        prose-a:text-blue-600 prose-p:text-justify prose-img:rounded-xl
-        prose-headings:underline"
+        prose-headings:text-yellow-700 dark:prose-headings:text-dk-secondary
+        prose-a:text-accent dark:prose-a:text-dk-accent prose-a:underline prose-a:font-semibold prose-p:text-justify prose-img:rounded-xl"
         >
           <slot />
         </div>
