@@ -5,18 +5,18 @@ const { projects } = Astro.props;
 ---
 
 <div class="container mx-auto px-4 h-full flex flex-col pt-20 pb-8">
-  <!-- Section header -->
-  <div class="mb-6 flex-shrink-0">
-    <h1
-      class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text"
-    >
-      Projects
-    </h1>
-    <p class="mt-4 text-text/50 dark:text-dk-text/50 text-lg">Things I've built</p>
-  </div>
-
-  <!-- Vertical auto-rotating carousel (2 per row on large screens, 1 on small) -->
-  <div class="flex-1 min-h-0 sm:overflow-hidden flex flex-col justify-center">
-    <ProjectCarousel projects={projects} client:only="react" />
+  <!-- Title + carousel centered together as one group -->
+  <div class="flex-1 min-h-0 overflow-hidden flex flex-col justify-center">
+    <div class="mb-4 flex-shrink-0">
+      <h1
+        class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text"
+      >
+        Projects
+      </h1>
+      <p class="mt-4 text-text/50 dark:text-dk-text/50 text-lg">Things I've built</p>
+    </div>
+    <div class="min-h-0">
+      <ProjectCarousel projects={projects} client:only="react" />
+    </div>
   </div>
 </div>

@@ -150,7 +150,7 @@ const heroKeywords = info.hero_keywords.map((text, i) => ({
       </div>
 
       <!-- Right: Photo (clean — the yellow now washes the whole hero) -->
-      <div class="relative flex-shrink-0 mx-auto sm:mx-0">
+      <div class="relative flex-shrink-0 mx-auto sm:mx-0 hidden sm:block">
         <img
           src={info.picture}
           alt={info.picture_alt}
@@ -173,9 +173,9 @@ const heroKeywords = info.hero_keywords.map((text, i) => ({
   </section>
 
   <!-- About Section -->
-  <section class="snap-start min-h-screen sm:h-screen pt-20 pb-4 flex flex-col" id="about">
+  <section class="snap-start h-screen pt-20 pb-4 flex flex-col" id="about">
     <!-- Pinned title so you always know which section you're in -->
-    <div class="w-full flex justify-center flex-shrink-0 mb-4">
+    <div class="w-full flex justify-center flex-shrink-0 mb-4 sticky top-16 z-20 bg-primary dark:bg-dk-primary">
       <div class="w-full lg:w-3/4 xl:w-2/3 px-4">
         <h1 class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text">
           About Me
@@ -189,7 +189,7 @@ const heroKeywords = info.hero_keywords.map((text, i) => ({
 
   <!-- Projects Section -->
   <section
-    class="snap-start min-h-screen sm:h-screen w-full"
+    class="snap-start h-screen w-full"
     id="projects"
   >
     <ProjectList projects={info.projects} />
@@ -197,7 +197,7 @@ const heroKeywords = info.hero_keywords.map((text, i) => ({
 
   <!-- Blog Section -->
   <section
-    class="snap-start min-h-screen sm:h-screen w-full"
+    class="snap-start h-screen w-full"
     id="blog"
   >
     <Blog posts={posts} />
@@ -205,7 +205,7 @@ const heroKeywords = info.hero_keywords.map((text, i) => ({
 
   <!-- Contact Section -->
   <section
-    class="snap-start min-h-screen sm:h-screen pt-20 pb-6 flex flex-col justify-center w-full"
+    class="snap-start h-screen pt-20 pb-6 flex flex-col justify-center w-full"
     id="contact"
   >
     <Contact contact={info.contact} size="lg" />

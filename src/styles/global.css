@@ -89,13 +89,15 @@ body {
 }
 
 *::selection {
-  background-color: theme(colors.secondary) !important;
-  color: theme(colors.primary) !important;
+  background-color: rgba(234, 179, 8, 0.3) !important; /* soft yellow */
+  color: theme(colors.text) !important;
+  -webkit-text-fill-color: theme(colors.text);
 }
 
 html.dark *::selection {
-  background-color: theme(colors.dk-secondary) !important;
-  color: theme(colors.dk-primary) !important;
+  background-color: rgba(253, 224, 71, 0.28) !important;
+  color: theme(colors.dk-text) !important;
+  -webkit-text-fill-color: theme(colors.dk-text);
 }
 
 /* Section title with yellow underline accent */
@@ -121,12 +123,27 @@ html.dark *::selection {
   border-left: 4px solid theme(colors.secondary);
 }
 
-/* --- Project carousel: position the dots vertically on the right --- */
-.project-carousel .slick-slider {
+/* --- Project (horizontal) carousel: equal-height slides so every card shows
+       its full text (all match the tallest) --- */
+.project-row .slick-track {
+  display: flex !important;
+  align-items: stretch;
+}
+
+.project-row .slick-slide {
+  height: inherit !important;
+}
+
+.project-row .slick-slide > div {
+  height: 100%;
+}
+
+/* --- Vertical carousel: position the dots on the right --- */
+.dots-right .slick-slider {
   position: static; /* dots anchor to the padded carousel, not the card area */
 }
 
-.project-carousel .slick-dots {
+.dots-right .slick-dots {
   top: 50%;
   right: 0.5rem;
   bottom: auto;
@@ -138,16 +155,24 @@ html.dark *::selection {
   gap: 0.25rem;
 }
 
-.project-carousel .slick-dots li {
+.dots-right .slick-dots li {
   margin: 0;
   width: 20px;
   height: 20px;
 }
 
-/* --- Homepage: snap each full-screen section into view (large screens) --- */
+/* --- Homepage: snap each full-screen section into view --- */
 @media (min-width: 1024px) {
+  /* desktop: JS drives the wheel; proximity is a gentle backstop */
   html.snap-page {
     scroll-snap-type: y proximity;
+  }
+}
+
+@media (max-width: 1023.98px) {
+  /* mobile / tablet: native touch snaps one section per screen */
+  html.snap-page {
+    scroll-snap-type: y mandatory;
   }
 }
 

@@ -1,0 +1,63 @@
+---
+// Vertical auto-scrolling area with a seamless, non-stop loop (the content is
+// duplicated so it can wrap without a jump). Shows a rounded scrollbar. The
+// user can wheel / swipe / focus to take over; it resumes after a moment.
+---
+
+<div class="scroll-area inner-scroll min-h-0 overflow-y-auto" tabindex="0">
+  <slot />
+</div>
+
+<script>
+  function setupArea(area: HTMLElement) {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const content = area.firstElementChild as HTMLElement | null;
+    if (!content) return;
+
+    let looped = false;
+    function ensureLoop() {
+      if (!looped && content!.offsetHeight > area.clientHeight + 8) {
+        const clone = content!.cloneNode(true) as HTMLElement;
+        clone.setAttribute("aria-hidden", "true");
+        area.appendChild(clone);
+        looped = true;
+      }
+    }
+    ensureLoop();
+    window.addEventListener("resize", ensureLoop);
+
+    let paused = false;
+    let idle: number | undefined;
+    const pause = () => {
+      paused = true;
+    };
+    const resume = () => {
+      paused = false;
+    };
+    const pauseIdle = () => {
+      paused = true;
+      if (idle) clearTimeout(idle);
+      idle = window.setTimeout(() => (paused = false), 2500);
+    };
+
+    area.addEventListener("pointerenter", pause);
+    area.addEventListener("pointerleave", resume);
+    area.addEventListener("focusin", pause);
+    area.addEventListener("focusout", resume);
+    area.addEventListener("wheel", pauseIdle, { passive: true });
+    area.addEventListener("touchstart", pause, { passive: true });
+    area.addEventListener("touchend", pauseIdle, { passive: true });
+
+    function tick() {
+      if (!paused && !reduce && looped) {
+        const half = area.scrollHeight / 2;
+        area.scrollTop += 0.4;
+        if (area.scrollTop >= half) area.scrollTop -= half; // seamless wrap
+      }
+      requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
+
+  document.querySelectorAll<HTMLElement>(".scroll-area").forEach(setupArea);
+</script>

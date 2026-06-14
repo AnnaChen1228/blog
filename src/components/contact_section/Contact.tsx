@@ -53,7 +53,7 @@ export default function Contact({ contact, size }: ContactProps) {
   }
 
   return (
-    <div className="container mx-auto px-4 flex flex-col items-center text-center gap-10">
+    <div className="container mx-auto px-4 flex flex-col items-center text-center gap-5 sm:gap-8">
       {/* Section header */}
       <div className="flex flex-col items-center gap-4">
         <h1 className="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text">
@@ -73,9 +73,9 @@ export default function Contact({ contact, size }: ContactProps) {
             target="_blank"
             rel="noreferrer"
             aria-label={social.label}
-            className="flex-1 flex flex-col items-center gap-3 p-6 bg-card-bg dark:bg-dk-card-bg border border-secondary/20 hover:border-secondary rounded-2xl hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300 group"
+            className="flex-1 flex flex-col items-center gap-2 p-4 sm:p-5 bg-card-bg dark:bg-dk-card-bg border border-secondary/20 hover:border-secondary rounded-2xl hover:shadow-lg hover:shadow-secondary/10 transition-all duration-300 group"
           >
-            <div className="w-14 h-14 rounded-full bg-secondary/10 group-hover:bg-secondary flex items-center justify-center transition-all duration-300">
+            <div className="w-11 h-11 sm:w-12 sm:h-12 rounded-full bg-secondary/10 group-hover:bg-secondary flex items-center justify-center transition-all duration-300">
               <i
                 className={`${social.icon} text-2xl text-secondary group-hover:text-white transition-colors duration-300`}
               />
@@ -91,7 +91,7 @@ export default function Contact({ contact, size }: ContactProps) {
       {/* CTA */}
       <a
         href={`mailto:${contact.email}`}
-        className="inline-flex items-center gap-2 bg-secondary hover:bg-accent text-white font-semibold px-8 py-4 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-secondary/30 text-lg"
+        className="inline-flex items-center gap-2 bg-secondary hover:bg-accent text-white font-semibold px-6 py-3 rounded-full transition-all duration-200 hover:shadow-lg hover:shadow-secondary/30 text-base lg:text-lg"
       >
         <i className="fas fa-paper-plane" />
         Send a Message

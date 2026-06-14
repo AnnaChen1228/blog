@@ -16,7 +16,20 @@ const title = "Posts";
 
 <BaseLayout title={title}>
   <div
-    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-24"
+    class="sticky top-16 z-20 bg-primary dark:bg-dk-primary px-4 md:px-2 xl:px-5 pt-6 pb-4"
+  >
+    <h1
+      class="text-4xl lg:text-5xl font-display font-bold section-heading text-text dark:text-dk-text"
+    >
+      Blog
+    </h1>
+    <p class="mt-4 text-text/50 dark:text-dk-text/50 text-lg">
+      Notes &amp; paper reading on GenAI, RAG, and the systems I build.
+    </p>
+  </div>
+
+  <div
+    class="grid gap-8 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 p-4 md:p-2 xl:p-5 mt-6"
   >
     {
       allPosts.map((post) => (

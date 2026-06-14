@@ -64,7 +64,7 @@ export default function Search({ posts }: any) {
     <div className="self-center">
       <button onClick={() => setSearch(true)} aria-label="Search">
         <i
-          className="fa fa-search self-center hover:text-accent dark:hover:text-dk-accent text-2xl"
+          className="fa fa-search self-center text-text dark:text-dk-text hover:text-accent dark:hover:text-dk-accent text-2xl"
           onClick={() => setSearch(true)}
         ></i>
       </button>
